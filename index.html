@@ -1,0 +1,2001 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mùa Xuân ở Hà Nội — Carte de Vietnameză A1</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,400&family=Lora:ital,wght@0,400;0,500;1,400&family=Fira+Code:wght@400;500&display=swap');
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#faf8f4; --surf:#ffffff; --bord:#e2d8cc; --bord2:#cfc2b0;
+  --text:#1c1814; --text2:#4a3f35; --muted:#8a7d70;
+  --accent:#1b6b5a; --accent2:#134d41; --accent-bg:#edf5f2;
+  --warm:#c96a0a; --warm-bg:#fdf3e8;
+  --sw:220px; --mth:52px; --mbh:56px;
+  --cn:#c04030; --cv:#1b5a8a; --cp:#6a3a90; --ca:#2a7a50;
+  --cnm:#c07810; --cnu:#7a6818; --cc:#b04020; --ccj:#3a4a90;
+}
+
+html{scroll-behavior:smooth}
+
+/* ── desktop layout ── */
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'Lora',Georgia,serif;
+  display:grid;
+  grid-template-columns:var(--sw) 1fr;
+  grid-template-areas:"side book";
+  height:100vh;overflow:hidden;
+}
+.mob-hd,.mob-tabs,.mob-bn{display:none}
+
+/* ── sidebar ── */
+.sidebar{
+  grid-area:side;background:var(--surf);
+  border-right:1px solid var(--bord);
+  display:flex;flex-direction:column;
+  height:100vh;overflow-y:auto;
+  scrollbar-width:thin;scrollbar-color:var(--bord2) transparent;
+}
+.sb-header{padding:26px 20px 18px;border-bottom:1px solid var(--bord)}
+.sb-title{
+  font-family:'Fraunces',serif;font-size:1.3rem;font-weight:900;
+  color:var(--accent);line-height:1.1;margin-bottom:3px;
+}
+.sb-sub{
+  font-family:'Fira Code',monospace;font-size:.5rem;
+  color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:12px;
+}
+.sb-hint{
+  font-family:'Fira Code',monospace;font-size:.5rem;
+  color:var(--accent);letter-spacing:.04em;
+  background:var(--accent-bg);padding:3px 8px;border-radius:3px;
+  display:inline-block;
+}
+.sb-controls{
+  display:flex;gap:6px;padding:12px 20px;border-bottom:1px solid var(--bord);
+}
+.tgl{
+  font-family:'Fira Code',monospace;font-size:.56rem;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--muted);
+  background:transparent;border:1px solid var(--bord2);border-radius:3px;
+  padding:5px 9px;cursor:pointer;transition:all .2s;flex:1;white-space:nowrap;
+}
+.tgl:hover{color:var(--accent);border-color:var(--accent)}
+.tgl.active{color:#fff;background:var(--accent);border-color:var(--accent)}
+.sb-progress{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 20px;border-bottom:1px solid var(--bord);
+}
+.sp-bar{flex:1;height:2px;background:var(--bord);border-radius:1px;overflow:hidden}
+.sp-fill{height:100%;background:var(--accent);width:0%;transition:width .4s ease}
+.sp-label{font-family:'Fira Code',monospace;font-size:.5rem;color:var(--muted);white-space:nowrap}
+.sb-nav-head{
+  font-family:'Fira Code',monospace;font-size:.48rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.12em;padding:13px 20px 7px;
+}
+.ch-btn{
+  display:flex;align-items:flex-start;gap:10px;width:100%;
+  padding:9px 20px;background:none;border:none;
+  border-left:3px solid transparent;text-align:left;cursor:pointer;transition:all .15s;
+}
+.ch-btn:hover{background:var(--accent-bg)}
+.ch-btn.active{border-left-color:var(--accent);background:var(--accent-bg)}
+.ch-btn.active .cb-num,.ch-btn.active .cb-title{color:var(--accent2)}
+.ch-btn.done .cb-num::after{content:' ✓';color:var(--accent);font-size:.5rem}
+.cb-num{
+  font-family:'Fraunces',serif;font-size:.68rem;font-weight:700;
+  color:var(--muted);flex-shrink:0;line-height:1.5;min-width:20px;
+}
+.cb-texts{flex:1;min-width:0}
+.cb-title{
+  font-family:'Lora',serif;font-size:.84rem;font-weight:500;color:var(--text2);
+  line-height:1.3;display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.cb-sub{
+  font-family:'Lora',serif;font-size:.7rem;font-style:italic;color:var(--muted);
+  display:block;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.sb-legend{margin-top:auto;padding:13px 20px;border-top:1px solid var(--bord)}
+.sb-legend-head{
+  font-family:'Fira Code',monospace;font-size:.48rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.12em;margin-bottom:8px;
+}
+.lg-row{
+  display:flex;align-items:center;gap:7px;
+  font-family:'Lora',serif;font-size:.74rem;color:var(--muted);margin-bottom:4px;
+}
+.lg-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+
+/* ── book ── */
+.book{grid-area:book;overflow-y:auto;padding:52px 68px 80px;scroll-behavior:smooth}
+.book-inner{max-width:64ch;margin:0 auto}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.book-inner{animation:fadeUp .35s ease both}
+
+/* chapter header */
+.ch-header{position:relative;margin-bottom:48px;padding-top:10px;overflow:hidden}
+.ch-num-bg{
+  position:absolute;top:-20px;right:-8px;
+  font-family:'Fraunces',serif;font-size:9rem;font-weight:900;
+  color:var(--accent);opacity:.06;line-height:1;
+  pointer-events:none;user-select:none;
+}
+.ch-label{
+  font-family:'Fira Code',monospace;font-size:.56rem;color:var(--accent);
+  letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px;display:block;
+  position:relative;
+}
+.ch-viet{
+  font-family:'Fraunces',serif;font-size:2.2rem;font-weight:700;
+  color:var(--text);line-height:1.2;margin-bottom:6px;position:relative;
+}
+.ch-ro{
+  font-family:'Lora',serif;font-style:italic;font-size:1rem;
+  color:var(--muted);margin-bottom:22px;position:relative;
+}
+.ch-rule{height:2px;background:linear-gradient(to right,var(--accent) 0%,transparent 100%);border:none}
+
+/* paragraphs */
+.para{margin-bottom:0}
+.para-text{
+  font-family:'Lora',serif;font-size:1.2rem;line-height:2.05;
+  color:var(--text);letter-spacing:.005em;
+}
+.para-ro{
+  font-family:'Lora',serif;font-style:italic;font-size:.92rem;
+  color:#5a7a9a;line-height:1.65;
+  padding:8px 0 8px 14px;border-left:2px solid #baccd8;
+  margin-top:6px;display:none;
+}
+.para-ro.vis,.show-all .para-ro{display:block}
+.tr-btn{
+  font-family:'Fira Code',monospace;font-size:.52rem;color:var(--muted);
+  background:none;border:none;cursor:pointer;letter-spacing:.06em;
+  text-transform:uppercase;padding:4px 0;margin-top:2px;display:block;transition:color .15s;
+}
+.tr-btn:hover,.tr-btn.open{color:#5a7a9a}
+.sep{
+  text-align:center;color:var(--accent);font-size:.7rem;
+  letter-spacing:.6em;margin:28px 0;opacity:.35;
+}
+
+/* words */
+.w{cursor:pointer;border-bottom:1.5px dotted var(--bord2);padding-bottom:1px;transition:color .12s,border-color .12s,border-bottom-style .12s}
+.w:hover,.w.lit{border-bottom-style:solid}
+.wn:hover,.wn.lit{color:var(--cn);border-color:var(--cn)}
+.wv:hover,.wv.lit{color:var(--cv);border-color:var(--cv)}
+.wp:hover,.wp.lit{color:var(--cp);border-color:var(--cp)}
+.wa:hover,.wa.lit{color:var(--ca);border-color:var(--ca)}
+.wnm:hover,.wnm.lit{color:var(--cnm);border-color:var(--cnm)}
+.wnu:hover,.wnu.lit{color:var(--cnu);border-color:var(--cnu)}
+.wc:hover,.wc.lit{color:var(--cc);border-color:var(--cc)}
+.wcj:hover,.wcj.lit{color:var(--ccj);border-color:var(--ccj)}
+.colorize .w{border-bottom-style:solid}
+.colorize .wn{color:var(--cn);border-color:var(--cn)}
+.colorize .wv{color:var(--cv);border-color:var(--cv)}
+.colorize .wp{color:var(--cp);border-color:var(--cp)}
+.colorize .wa{color:var(--ca);border-color:var(--ca)}
+.colorize .wnm{color:var(--cnm);border-color:var(--cnm)}
+.colorize .wnu{color:var(--cnu);border-color:var(--cnu)}
+.colorize .wc{color:var(--cc);border-color:var(--cc)}
+.colorize .wcj{color:var(--ccj);border-color:var(--ccj)}
+
+/* chapter nav */
+.ch-nav{display:flex;justify-content:space-between;gap:14px;margin-top:52px;padding-top:26px;border-top:1px solid var(--bord)}
+.nav-btn{
+  background:none;border:1px solid var(--bord2);border-radius:6px;
+  padding:12px 18px;color:var(--muted);font-family:'Lora',serif;font-size:.9rem;
+  cursor:pointer;text-align:center;line-height:1.4;transition:all .2s;
+  flex:1;max-width:48%;
+}
+.nav-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-bg)}
+.nav-btn:disabled{opacity:.2;pointer-events:none}
+.nav-dir{
+  font-family:'Fira Code',monospace;font-size:.5rem;letter-spacing:.08em;
+  text-transform:uppercase;display:block;margin-bottom:3px;color:var(--muted);
+}
+
+/* tooltip (desktop) */
+#tt{
+  position:fixed;background:#fff;border:1px solid var(--bord);border-radius:10px;
+  padding:16px 18px;width:230px;
+  box-shadow:0 8px 32px rgba(0,0,0,.13),0 2px 8px rgba(0,0,0,.07);
+  z-index:5000;pointer-events:none;
+  opacity:0;transform:translateY(6px) scale(.97);transition:opacity .15s,transform .15s;
+}
+#tt.on{opacity:1;transform:none;pointer-events:auto}
+.tt-badge{
+  font-family:'Fira Code',monospace;font-size:.5rem;text-transform:uppercase;
+  letter-spacing:.1em;margin-bottom:8px;padding:2px 7px;border-radius:3px;
+  display:inline-block;
+}
+.tt-word{
+  font-family:'Fraunces',serif;font-size:2rem;font-weight:700;
+  line-height:1.1;margin-bottom:4px;color:var(--text);
+}
+.tt-phon{font-family:'Fira Code',monospace;font-size:.64rem;color:var(--accent);margin-bottom:10px}
+.tt-divider{height:1px;background:var(--bord);margin-bottom:10px}
+.tt-ro{font-family:'Lora',serif;font-style:italic;font-size:.93rem;color:#5a7a9a;line-height:1.45}
+
+/* ── mobile ── */
+@media(max-width:768px){
+  body{
+    display:flex;flex-direction:column;
+    height:auto;min-height:100vh;overflow:visible;
+    padding-top:var(--mth);padding-bottom:var(--mbh);
+  }
+  .sidebar{display:none}
+
+  /* mobile header */
+  .mob-hd{
+    display:flex;align-items:center;gap:10px;
+    position:fixed;top:0;left:0;right:0;height:var(--mth);
+    background:#fff;border-bottom:1px solid var(--bord);
+    padding:0 16px;z-index:200;
+  }
+  .mob-title{
+    font-family:'Fraunces',serif;font-size:.95rem;font-weight:900;
+    color:var(--accent);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .mob-ctrl{display:flex;gap:6px}
+  .mob-tgl{
+    font-family:'Fira Code',monospace;font-size:.56rem;text-transform:uppercase;
+    letter-spacing:.04em;color:var(--muted);background:none;
+    border:1px solid var(--bord2);border-radius:3px;padding:5px 8px;
+    cursor:pointer;transition:all .2s;
+  }
+  .mob-tgl:hover{color:var(--accent);border-color:var(--accent)}
+  .mob-tgl.active{color:#fff;background:var(--accent);border-color:var(--accent)}
+
+  /* mobile chapter tabs */
+  .mob-tabs{
+    display:block;background:#fff;border-bottom:1px solid var(--bord);
+    overflow-x:auto;white-space:nowrap;padding:8px 12px;
+    scrollbar-width:none;position:sticky;top:var(--mth);z-index:100;
+    -webkit-overflow-scrolling:touch;
+  }
+  .mob-tabs::-webkit-scrollbar{display:none}
+  .mob-tab{
+    display:inline-block;font-family:'Fira Code',monospace;font-size:.6rem;
+    color:var(--muted);border:1px solid var(--bord2);border-radius:4px;
+    padding:4px 10px;margin-right:6px;cursor:pointer;background:none;
+    transition:all .15s;letter-spacing:.02em;
+  }
+  .mob-tab.active{color:#fff;background:var(--accent);border-color:var(--accent)}
+  .mob-tab:hover{color:var(--accent);border-color:var(--accent)}
+
+  /* book */
+  .book{padding:28px 18px 24px;overflow:visible;flex:1}
+  .book-inner{max-width:100%}
+  .ch-num-bg{font-size:5rem;opacity:.05}
+  .ch-viet{font-size:1.65rem}
+  .para-text{font-size:1.05rem;line-height:1.95}
+
+  /* mobile bottom nav */
+  .mob-bn{
+    display:flex;align-items:center;
+    position:fixed;bottom:0;left:0;right:0;height:var(--mbh);
+    background:#fff;border-top:1px solid var(--bord);z-index:200;
+  }
+  .mbn-arrow{
+    font-family:'Fira Code',monospace;font-size:1.1rem;color:var(--muted);
+    background:none;border:none;padding:0 18px;height:100%;
+    cursor:pointer;transition:color .15s;flex-shrink:0;
+    display:flex;align-items:center;
+  }
+  .mbn-arrow:hover{color:var(--accent)}
+  .mbn-arrow:disabled{opacity:.25;pointer-events:none}
+  .mbn-info{flex:1;text-align:center;padding:0 6px;overflow:hidden}
+  .mbn-num{font-family:'Fraunces',serif;font-size:.62rem;color:var(--accent);font-weight:900;display:block}
+  .mbn-title{
+    font-family:'Lora',serif;font-size:.78rem;color:var(--text2);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block;
+  }
+
+  /* tooltip → bottom sheet */
+  #tt{
+    position:fixed;bottom:var(--mbh);left:0;right:0;top:auto;
+    width:100%;border-radius:14px 14px 0 0;
+    border-left:none;border-right:none;border-bottom:none;
+    opacity:1;transform:translateY(100%);
+    box-shadow:0 -4px 28px rgba(0,0,0,.13);
+    padding:8px 24px 20px;
+    transition:transform .3s cubic-bezier(.4,0,.2,1);
+  }
+  #tt::before{
+    content:'';display:block;width:36px;height:3px;
+    background:var(--bord2);border-radius:2px;margin:0 auto 14px;
+  }
+  #tt.on{transform:translateY(0);opacity:1}
+  .tt-word{font-size:2.2rem}
+}
+
+@media(max-width:420px){
+  .book{padding:20px 14px 20px}
+  .ch-num-bg{font-size:3.8rem}
+  .ch-viet{font-size:1.4rem}
+  .para-text{font-size:.98rem}
+}
+
+/* ── mode tabs ── */
+.sb-mode{display:flex;border-bottom:1px solid var(--bord)}
+.mode-tab{
+  flex:1;font-family:'Fira Code',monospace;font-size:.56rem;
+  letter-spacing:.04em;text-transform:uppercase;color:var(--muted);
+  background:none;border:none;border-bottom:3px solid transparent;
+  padding:11px 8px;cursor:pointer;transition:all .2s;
+}
+.mode-tab:hover{color:var(--accent)}
+.mode-tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* ── practice panel ── */
+.practice{
+  grid-area:book;overflow-y:auto;padding:44px 64px 80px;
+  display:none;scroll-behavior:smooth;background:var(--bg);
+}
+body.practice-mode .practice{display:block}
+body.practice-mode .book{display:none}
+body.practice-mode .mob-tabs{display:none!important}
+
+/* phases */
+.pr-phases{display:flex;gap:8px;max-width:560px;margin:0 auto 28px}
+.pr-phase{
+  flex:1;background:var(--surf);border:1px solid var(--bord);border-radius:8px;
+  padding:10px 8px;text-align:center;transition:all .2s;
+}
+.pr-phase.active{border-color:var(--accent);background:var(--accent-bg)}
+.pr-phase.done{border-color:var(--accent);opacity:.45}
+.ph-num{
+  font-family:'Fira Code',monospace;font-size:.44rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px;
+}
+.ph-label{
+  font-family:'Lora',serif;font-size:.76rem;color:var(--text2);
+  display:block;line-height:1.3;
+}
+
+/* stats */
+.pr-stats{
+  display:flex;justify-content:center;gap:24px;margin-bottom:24px;
+  font-family:'Fira Code',monospace;font-size:.58rem;color:var(--muted);letter-spacing:.04em;
+}
+.pr-stats b{color:var(--text);font-weight:500}
+
+/* card */
+.pr-card{
+  max-width:480px;margin:0 auto;
+  background:var(--surf);border:1px solid var(--bord);border-radius:16px;
+  padding:44px 40px;text-align:center;
+  box-shadow:0 4px 28px rgba(0,0,0,.07);
+  min-height:300px;display:flex;flex-direction:column;justify-content:center;gap:0;
+}
+.pr-badge{
+  font-family:'Fira Code',monospace;font-size:.5rem;text-transform:uppercase;
+  letter-spacing:.1em;padding:2px 8px;border-radius:3px;
+  display:inline-block;margin-bottom:18px;
+}
+.pr-word{
+  font-family:'Fraunces',serif;font-size:3.2rem;font-weight:700;
+  color:var(--text);line-height:1.1;margin-bottom:14px;
+}
+.pr-ctx-front{
+  font-family:'Lora',serif;font-size:.86rem;font-style:italic;
+  color:var(--muted);line-height:1.65;margin-bottom:28px;
+  max-width:360px;margin-inline:auto;
+}
+.pr-reveal{
+  font-family:'Fira Code',monospace;font-size:.58rem;letter-spacing:.08em;
+  text-transform:uppercase;color:#fff;background:var(--accent);
+  border:none;border-radius:6px;padding:12px 28px;cursor:pointer;
+  transition:background .2s;margin-inline:auto;
+}
+.pr-reveal:hover{background:var(--accent2)}
+
+/* answer */
+.pr-phon{
+  font-family:'Fira Code',monospace;font-size:.78rem;color:var(--accent);margin-bottom:10px;
+}
+.pr-ro-word{
+  font-family:'Fraunces',serif;font-size:2rem;font-weight:700;
+  color:var(--text);margin-bottom:16px;
+}
+.pr-ro-ctx{
+  font-family:'Lora',serif;font-size:.84rem;font-style:italic;
+  color:#5a7a9a;line-height:1.6;margin-bottom:24px;
+  padding:10px 14px;border-left:2px solid #baccd8;text-align:left;
+  border-radius:0 6px 6px 0;background:#f4f8fc;
+}
+.pr-btns{display:flex;gap:8px;justify-content:center}
+.sr-btn{
+  font-family:'Fira Code',monospace;font-size:.56rem;letter-spacing:.04em;
+  text-transform:uppercase;border:1px solid var(--bord2);border-radius:6px;
+  padding:10px 0;cursor:pointer;transition:all .2s;background:none;flex:1;
+}
+.sr-btn.again{color:#c04030;border-color:#c04030}.sr-btn.again:hover{background:#c04030;color:#fff}
+.sr-btn.hard{color:var(--warm);border-color:var(--warm)}.sr-btn.hard:hover{background:var(--warm);color:#fff}
+.sr-btn.good{color:var(--accent);border-color:var(--accent)}.sr-btn.good:hover{background:var(--accent);color:#fff}
+.sr-btn.easy{color:#2a7a50;border-color:#2a7a50}.sr-btn.easy:hover{background:#2a7a50;color:#fff}
+
+/* empty state */
+.pr-empty{max-width:480px;margin:60px auto;text-align:center;display:none}
+.pr-empty-icon{font-size:2.8rem;margin-bottom:16px}
+.pr-empty-title{
+  font-family:'Fraunces',serif;font-size:1.6rem;color:var(--accent);margin-bottom:8px;
+}
+.pr-empty-sub{
+  font-family:'Lora',serif;font-size:.9rem;color:var(--muted);font-style:italic;line-height:1.7;
+}
+
+/* mobile practice */
+@media(max-width:768px){
+  .practice{padding:20px 16px 24px}
+  .pr-phases{flex-wrap:wrap}
+  .pr-phase{min-width:calc(50% - 4px)}
+  .pr-card{padding:28px 20px;min-height:260px}
+  .pr-word{font-size:2.4rem}
+  .pr-btns{flex-wrap:wrap}
+  .sr-btn{flex:calc(50% - 4px);padding:12px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- ── desktop sidebar ── -->
+<aside class="sidebar">
+  <div class="sb-header">
+    <h1 class="sb-title">Mùa Xuân<br>ở Hà Nội</h1>
+    <p class="sb-sub">Carte de Vietnameză · A1</p>
+    <span class="sb-hint">apasă pe orice cuvânt</span>
+  </div>
+  <div class="sb-mode">
+    <button class="mode-tab active" id="tab-read">Citire</button>
+    <button class="mode-tab" id="tab-practice">Practică</button>
+  </div>
+  <div class="sb-controls">
+    <button class="tgl" id="btn-color">colorează</button>
+    <button class="tgl" id="btn-trans">traduce tot</button>
+  </div>
+  <div class="sb-progress">
+    <div class="sp-bar"><div class="sp-fill" id="sp-fill"></div></div>
+    <span class="sp-label" id="sp-label">0 / 8</span>
+  </div>
+  <div class="sb-nav-head">Cuprins</div>
+  <div id="ch-list"></div>
+  <div class="sb-legend">
+    <div class="sb-legend-head">Legendă</div>
+    <div class="lg-row"><div class="lg-dot" style="background:var(--cn)"></div>substantiv</div>
+    <div class="lg-row"><div class="lg-dot" style="background:var(--cv)"></div>verb</div>
+    <div class="lg-row"><div class="lg-dot" style="background:var(--cp)"></div>particulă / pronume</div>
+    <div class="lg-row"><div class="lg-dot" style="background:var(--ca)"></div>adjectiv / adverb</div>
+    <div class="lg-row"><div class="lg-dot" style="background:var(--cnm)"></div>nume propriu</div>
+    <div class="lg-row"><div class="lg-dot" style="background:var(--cnu)"></div>număr</div>
+    <div class="lg-row"><div class="lg-dot" style="background:var(--cc)"></div>clasificator</div>
+    <div class="lg-row"><div class="lg-dot" style="background:var(--ccj)"></div>conjuncție</div>
+  </div>
+</aside>
+
+<!-- ── mobile header ── -->
+<header class="mob-hd">
+  <span class="mob-title">Mùa Xuân ở Hà Nội</span>
+  <div class="mob-ctrl">
+    <button class="mob-tgl" id="mob-btn-color">culori</button>
+    <button class="mob-tgl" id="mob-btn-trans">trad.</button>
+    <button class="mob-tgl" id="mob-btn-practice">practică</button>
+  </div>
+</header>
+
+<!-- ── mobile chapter tabs ── -->
+<div class="mob-tabs" id="mob-tabs"></div>
+
+<!-- ── book content ── -->
+<main class="book" id="book"></main>
+
+<!-- ── practice panel ── -->
+<section class="practice" id="practice">
+  <div class="pr-phases" id="pr-phases">
+    <div class="pr-phase active" data-phase="0">
+      <div class="ph-num">faza 1 · 5 min</div>
+      <span class="ph-label">Repetă cuvinte vechi</span>
+    </div>
+    <div class="pr-phase" data-phase="1">
+      <div class="ph-num">faza 2 · 5 min</div>
+      <span class="ph-label">Cuvinte noi</span>
+    </div>
+    <div class="pr-phase" data-phase="2">
+      <div class="ph-num">faza 3 · 5 min</div>
+      <span class="ph-label">Formează propoziții</span>
+    </div>
+    <div class="pr-phase" data-phase="3">
+      <div class="ph-num">faza 4 · 5 min</div>
+      <span class="ph-label">Vorbește cu voce tare</span>
+    </div>
+  </div>
+  <div class="pr-stats">
+    <span>De revăzut: <b id="pr-due">0</b></span>
+    <span>Noi azi: <b id="pr-new">0</b></span>
+    <span>Sesiune: <b id="pr-done">0</b></span>
+  </div>
+  <div id="pr-card" class="pr-card">
+    <div id="pr-front">
+      <div class="pr-badge" id="pr-badge"></div>
+      <div class="pr-word" id="pr-word"></div>
+      <div class="pr-ctx-front" id="pr-ctx-front"></div>
+      <button class="pr-reveal" id="pr-reveal">Arată răspunsul ↓</button>
+    </div>
+    <div id="pr-back" style="display:none">
+      <div class="pr-phon" id="pr-phon"></div>
+      <div class="pr-ro-word" id="pr-ro-word"></div>
+      <div class="pr-ro-ctx" id="pr-ro-ctx"></div>
+      <div class="pr-btns">
+        <button class="sr-btn again" id="sr-again">Din nou</button>
+        <button class="sr-btn hard" id="sr-hard">Greu</button>
+        <button class="sr-btn good" id="sr-good">Bine</button>
+        <button class="sr-btn easy" id="sr-easy">Ușor</button>
+      </div>
+    </div>
+  </div>
+  <div class="pr-empty" id="pr-empty">
+    <div class="pr-empty-icon">🌿</div>
+    <div class="pr-empty-title">Sesiune completă!</div>
+    <div class="pr-empty-sub">Toate cardurile au fost repetate.<br>Revino mâine pentru o nouă sesiune.<br><br>Consistența &gt; intensitatea.</div>
+  </div>
+</section>
+
+<!-- ── mobile bottom nav ── -->
+<nav class="mob-bn">
+  <button class="mbn-arrow" id="mbn-prev">←</button>
+  <div class="mbn-info">
+    <span class="mbn-num" id="mbn-num">I</span>
+    <span class="mbn-title" id="mbn-title">Hoa đến Hà Nội</span>
+  </div>
+  <button class="mbn-arrow" id="mbn-next">→</button>
+</nav>
+
+<!-- ── tooltip ── -->
+<div id="tt">
+  <div class="tt-badge" id="tt-type"></div>
+  <div class="tt-word" id="tt-word"></div>
+  <div class="tt-phon" id="tt-phon"></div>
+  <div class="tt-divider"></div>
+  <div class="tt-ro"   id="tt-ro"></div>
+</div>
+
+<script>
+/* ── helpers ── */
+const n  = (w,ph,ro) => ({w,ph,ro,t:"n"});
+const vb = (w,ph,ro) => ({w,ph,ro,t:"v"});
+const p  = (w,ph,ro) => ({w,ph,ro,t:"p"});
+const a  = (w,ph,ro) => ({w,ph,ro,t:"a"});
+const nm = (w,ph,ro) => ({w,ph,ro,t:"nm"});
+const nu = (w,ph,ro) => ({w,ph,ro,t:"nu"});
+const c  = (w,ph,ro) => ({w,ph,ro,t:"c"});
+const cj = (w,ph,ro) => ({w,ph,ro,t:"cj"});
+const _  = " ";
+
+const chapters = [
+{
+  num:"Chương Một", viet:"Hoa đến Hà Nội", sub:"Hoa ajunge în Hanoi",
+  paras:[
+    { ro:"Mă numesc Hoa. Sunt o studentă americancă. Tatăl meu este vietnamez, dar mama mea este americancă. Anul acesta am douăzeci și patru de ani. Vreau să studiez vietnameza și să înțeleg Vietnamul.",
+      t:[p("Tôi","toi","eu"), _, vb("tên là","ten la","mă numesc"), _, nm("Hoa","Hwa","Hoa (prenume)"), ". ",
+         p("Tôi","toi","eu"), _, vb("là","la","sunt"), _, c("một","mot","o"), _, n("sinh viên","sin vien","studentă"), _, n("người Mỹ","nguoi mi","americancă"), ". ",
+         n("Bố","bo","Tatăl"), _, p("tôi","toi","meu"), _, vb("là","la","este"), _, n("người Việt Nam","nguoi viet nam","vietnamez"), ", ",
+         cj("nhưng","nhung","dar"), _, n("mẹ","me","mama"), _, p("tôi","toi","mea"), _, vb("là","la","este"), _, n("người Mỹ","nguoi mi","americancă"), ". ",
+         n("Năm nay","nam nay","Anul acesta"), _, p("tôi","toi","eu"), _, nu("hai mươi bốn","hai muoi bon","douăzeci și patru"), _, n("tuổi","tuoi","ani"), ". ",
+         p("Tôi","toi","eu"), _, vb("muốn","muon","vreau"), _, vb("học","hok","a studia"), _, n("tiếng Việt","tieng viet","vietnameza"), _,
+         cj("và","va","și"), _, vb("tìm hiểu","tim hieu","a înțelege / a descoperi"), _,
+         p("về","ve","despre"), _, nm("Việt Nam","viet nam","Vietnam"), "."] },
+    { ro:"Astăzi am ajuns în Hanoi. Hanoi este capitala Vietnamului. Hanoi este foarte frumos. Oamenii din Hanoi sunt prietenoși. Sunt atât de fericită că am ajuns aici.",
+      t:[n("Hôm nay","hom nay","Astăzi"), _, p("tôi","toi","eu"), _, vb("đến","den","am ajuns la"), _,
+         nm("Hà Nội","ha noi","Hanoi"), ". ",
+         nm("Hà Nội","ha noi","Hanoi"), _, vb("là","la","este"), _, n("thủ đô","tu do","capitala"), _,
+         p("của","kua","a"), _, nm("Việt Nam","viet nam","Vietnamului"), ". ",
+         nm("Hà Nội","ha noi","Hanoi"), _, a("rất","rat","foarte"), _, a("đẹp","dep","frumos"), ". ",
+         n("Người","nguoi","Oamenii"), _, nm("Hà Nội","ha noi","din Hanoi"), _, a("rất","rat","foarte"), _, a("thân thiện","tan tien","prietenoși"), ". ",
+         p("Tôi","toi","eu"), _, a("rất","rat","foarte"), _, a("vui","vui","fericită"), _,
+         a("khi","khi","când"), _, vb("đến","den","am ajuns"), _, a("đây","day","aici"), "."] },
+    { ro:"Am mers la noua mea casă. Casa mea este pe strada Nguyễn Du. Casa este frumoasă și spațioasă. Casa are patru camere: salon, dormitor, bucătărie și baie. Sunt foarte mulțumită de această casă.",
+      t:[p("Tôi","toi","eu"), _, vb("đến","den","am ajuns la"), _, n("nhà","nya","casa"), _, a("mới","moi","nouă"), ". ",
+         n("Nhà","nya","Casa"), _, p("của","kua","mea"), _, p("ở","o","este pe"), _, n("phố","fo","strada"), _,
+         nm("Nguyễn Du","nguyen zu","Nguyễn Du"), ". ",
+         n("Nhà","nya","Casa"), _, a("đẹp","dep","frumoasă"), _, cj("và","va","și"), _, a("rộng","rong","spațioasă"), ". ",
+         n("Nhà","nya","Casa"), _, vb("có","ko","are"), _, nu("bốn","bon","patru"), _, n("phòng","fong","camere"), ": ",
+         n("phòng khách","fong khak","salon"), ", ", n("phòng ngủ","fong ngu","dormitor"), ", ",
+         n("phòng bếp","fong bep","bucătărie"), _, cj("và","va","și"), _,
+         n("phòng tắm","fong tam","baie"), ". ",
+         p("Tôi","toi","eu"), _, a("rất","rat","foarte"), _, vb("thích","tik","îmi place"), _,
+         n("ngôi nhà","ngoi nya","casa"), _, a("này","nay","aceasta"), "."] }
+  ]
+},
+{
+  num:"Chương Hai", viet:"Cô Lan, giáo viên của tôi", sub:"Doamna Lan, profesoara mea",
+  paras:[
+    { ro:"În prima zi am mers la școală. Școala mea se numește Universitatea Hanoi. Școala este mare și frumoasă. Sunt mulți studenți la această școală. Studenții vin din multe țări diferite.",
+      t:[n("Ngày đầu tiên","ngay dau tien","Prima zi"), _, p("tôi","toi","eu"), _, vb("đến","den","am mers la"), _,
+         n("trường","truong","școală"), ". ",
+         n("Trường","truong","Școala"), _, p("tôi","toi","mea"), _, vb("học","hok","studiez la"), _,
+         vb("tên là","ten la","se numește"), _, nm("Đại học Hà Nội","dai hok ha noi","Universitatea Hanoi"), ". ",
+         n("Trường","truong","Școala"), _, a("rất","rat","foarte"), _, a("lớn","lon","mare"), _,
+         cj("và","va","și"), _, a("đẹp","dep","frumoasă"), ". ",
+         vb("Có","ko","Sunt"), _, a("nhiều","nhieu","mulți"), _, n("sinh viên","sin vien","studenți"), _,
+         p("ở","o","la"), _, n("trường","truong","școală"), ". ",
+         n("Sinh viên","sin vien","Studenții"), _, vb("đến","den","vin"), _,
+         p("từ","tu","din"), _, a("nhiều","nhieu","multe"), _, n("nước","nuok","țări"), _, a("khác nhau","khak nhau","diferite"), "."] },
+    { ro:"Profesoara mea de vietnameză se numește doamna Lan. Doamna Lan este din Hanoi. Ea este foarte frumoasă și prietenoasă. Doamna Lan predă vietnameza foarte bine. Îmi place să studiez cu doamna Lan.",
+      t:[n("Giáo viên","ziao vien","Profesoara"), _, n("tiếng Việt","tieng viet","de vietnameză"), _,
+         p("của","kua","mea"), _, vb("tên là","ten la","se numește"), _, n("cô","ko","doamna"), _,
+         nm("Lan","lan","Lan"), ". ",
+         n("Cô","ko","Doamna"), _, nm("Lan","lan","Lan"), _, vb("là","la","este"), _,
+         n("người","nguoi","din"), _, nm("Hà Nội","ha noi","Hanoi"), ". ",
+         n("Cô","ko","Ea"), _, a("rất","rat","foarte"), _, a("đẹp","dep","frumoasă"), _,
+         cj("và","va","și"), _, a("thân thiện","tan tien","prietenoasă"), ". ",
+         n("Cô","ko","Doamna"), _, nm("Lan","lan","Lan"), _, vb("dạy","zay","predă"), _,
+         n("tiếng Việt","tieng viet","vietnameza"), _, a("rất","rat","foarte"), _, a("hay","hay","bine / frumos"), ". ",
+         p("Tôi","toi","eu"), _, vb("thích","tik","îmi place"), _, vb("học","hok","a studia"), _,
+         p("với","voi","cu"), _, n("cô","ko","doamna"), _, nm("Lan","lan","Lan"), "."] },
+    { ro:"Sala de clasă este mare și spațioasă. În sala de clasă sunt multe mese și scaune. Eu stau la prima masă. Prietena mea se numește Anna. Anna este o studentă franceză. Anna studiază și ea vietnameza.",
+      t:[n("Phòng học","fong hok","Sala de clasă"), _, a("rất","rat","foarte"), _, a("rộng","rong","spațioasă"), _,
+         cj("và","va","și"), _, a("sáng","sang","luminoasă"), ". ",
+         p("Trong","trong","În"), _, n("phòng học","fong hok","sala de clasă"), _,
+         vb("có","ko","sunt"), _, a("nhiều","nhieu","multe"), _, c("cái","kai","(clasificator)"), _,
+         n("bàn","ban","mese"), _, cj("và","va","și"), _, c("cái","kai","(clasificator)"), _,
+         n("ghế","ge","scaune"), ". ",
+         p("Tôi","toi","eu"), _, vb("ngồi","ngoi","stau"), _, p("ở","o","la"), _, n("bàn","ban","masa"), _,
+         n("đầu","dau","prima"), ". ",
+         n("Bạn","ban","Prietena"), _, p("tôi","toi","mea"), _, vb("tên là","ten la","se numește"), _,
+         nm("Anna","an-na","Anna"), ". ",
+         nm("Anna","an-na","Anna"), _, vb("là","la","este"), _, c("một","mot","o"), _,
+         n("sinh viên","sin vien","studentă"), _, n("người Pháp","nguoi fap","franceză"), ". ",
+         nm("Anna","an-na","Anna"), _, a("cũng","kung","și ea"), _, vb("học","hok","studiază"), _,
+         n("tiếng Việt","tieng viet","vietnameza"), "."] }
+  ]
+},
+{
+  num:"Chương Ba", viet:"Anh Nam, bác sĩ", sub:"Fratele Nam, medicul",
+  paras:[
+    { ro:"Doamna Lan are un soț pe nume Nam. Fratele Nam este medic. El lucrează la spital. Spitalul lui Nam se numește Spitalul Bach Mai. Spitalul acela este foarte mare.",
+      t:[n("Cô","ko","Doamna"), _, nm("Lan","lan","Lan"), _, vb("có","ko","are"), _,
+         n("chồng","chong","soț"), _, vb("tên là","ten la","pe nume"), _, n("anh","an","fratele (titlu)"), _,
+         nm("Nam","nam","Nam"), ". ",
+         n("Anh","an","Fratele"), _, nm("Nam","nam","Nam"), _, vb("là","la","este"), _, n("bác sĩ","bak si","medic"), ". ",
+         n("Anh","an","El"), _, a("ấy","ay","acela"), _, vb("làm việc","lam viek","lucrează"), _,
+         p("ở","o","la"), _, n("bệnh viện","ben vien","spital"), ". ",
+         n("Bệnh viện","ben vien","Spitalul"), _, p("của","kua","al lui"), _,
+         n("anh","an","fratelui"), _, nm("Nam","nam","Nam"), _, vb("tên là","ten la","se numește"), _,
+         n("Bệnh viện","ben vien","Spitalul"), _, nm("Bạch Mai","bak mai","Bach Mai"), ". ",
+         n("Bệnh viện","ben vien","Spitalul"), _, a("ấy","ay","acela"), _, a("rất","rat","foarte"), _,
+         a("lớn","lon","mare"), "."] },
+    { ro:"Într-o zi, doamna Lan m-a invitat la spital. Am ajuns la spital la ora zece dimineața. Spitalul are foarte mulți oameni. Medicii și asistentele lucrează din greu. Am văzut că medicii sunt foarte pricepuți.",
+      t:[c("Một","mot","Într-o"), _, n("hôm","hom","zi"), ", ",
+         n("cô","ko","doamna"), _, nm("Lan","lan","Lan"), _, vb("mời","moi","a invitat"), _,
+         p("tôi","toi","eu"), _, vb("đến","den","la"), _, n("bệnh viện","ben vien","spital"), ". ",
+         n("Chúng tôi","chung toi","Noi"), _, vb("đến","den","am ajuns la"), _,
+         n("bệnh viện","ben vien","spital"), _, a("lúc","luk","la ora"), _,
+         nu("mười","muoi","zece"), _, n("giờ","ziou","ora"), _, n("sáng","sang","dimineața"), ". ",
+         n("Bệnh viện","ben vien","Spitalul"), _, vb("có","ko","are"), _, a("rất","rat","foarte"), _,
+         a("nhiều","nhieu","mulți"), _, n("người","nguoi","oameni"), ". ",
+         n("Các bác sĩ","kak bak si","Medicii"), _, cj("và","va","și"), _, n("y tá","i ta","asistentele"), _,
+         vb("làm việc","lam viek","lucrează"), _, a("rất","rat","din greu / foarte"), _, a("bận rộn","ban ron","ocupați"), ". ",
+         p("Tôi","toi","eu"), _, vb("thấy","tay","am văzut"), _, n("các bác sĩ","kak bak si","medicii"), _,
+         a("rất","rat","foarte"), _, a("giỏi","zioi","pricepuți"), "."] },
+    { ro:"Fratele Nam ne-a întâmpinat la poarta spitalului. El purta un halat alb de medic. Nam ne-a prezentat asistentele. În spital există multe camere diferite. Fiecare cameră este curată și frumoasă.",
+      t:[n("Anh","an","Fratele"), _, nm("Nam","nam","Nam"), _, vb("gặp","gap","ne-a întâmpinat"), _,
+         n("chúng tôi","chung toi","noi"), _, p("ở","o","la"), _, n("cổng","kong","poarta"), _,
+         n("bệnh viện","ben vien","spitalului"), ". ",
+         n("Anh","an","El"), _, a("ấy","ay","acela"), _, vb("mặc","mak","purta"), _,
+         n("áo","ao","halat"), _, a("trắng","trang","alb"), _, n("bác sĩ","bak si","de medic"), ". ",
+         n("Anh","an","Fratele"), _, nm("Nam","nam","Nam"), _, vb("giới thiệu","zioi tieu","ne-a prezentat"), _,
+         n("các y tá","kak i ta","asistentele"), _, p("với","voi","cu"), _, p("tôi","toi","mine"), ". ",
+         p("Trong","trong","În"), _, n("bệnh viện","ben vien","spital"), _, vb("có","ko","există"), _,
+         a("nhiều","nhieu","multe"), _, n("phòng","fong","camere"), _, a("khác nhau","khak nhau","diferite"), ". ",
+         n("Phòng","fong","Fiecare cameră"), _, n("nào","nao","orice"), _, a("cũng","kung","la fel"), _,
+         a("sạch","sak","curată"), _, cj("và","va","și"), _, a("đẹp","dep","frumoasă"), "."] },
+    { ro:"Fratele Nam mi-a spus că a fi medic este greu, dar este frumos. Medicii ajută oamenii în fiecare zi. Nam lucrează la spital de la opt dimineața până la șase seara. Îl admir foarte mult pe fratele Nam.",
+      t:[n("Anh","an","Fratele"), _, nm("Nam","nam","Nam"), _, vb("nói","noi","mi-a spus"), _,
+         p("với","voi","că"), _, p("tôi","toi","eu"), _, a("rằng","rang","că"), _,
+         vb("làm","lam","a fi"), _, n("bác sĩ","bak si","medic"), _, a("vất vả","vat va","greu"), ",",
+         cj("nhưng","nhung","dar"), _, a("rất","rat","foarte"), _, a("đẹp","dep","frumos"), ". ",
+         n("Các bác sĩ","kak bak si","Medicii"), _, vb("giúp","ziup","ajută"), _,
+         n("người","nguoi","oamenii"), _, a("mỗi","moi","în fiecare"), _, n("ngày","ngay","zi"), ". ",
+         n("Anh","an","Fratele"), _, nm("Nam","nam","Nam"), _, vb("làm việc","lam viek","lucrează"), _,
+         p("ở","o","la"), _, n("bệnh viện","ben vien","spital"), _, p("từ","tu","de la"), _,
+         nu("tám","tam","opt"), _, n("giờ","ziou","ora"), _, n("sáng","sang","dimineața"), _,
+         p("đến","den","până la"), _, nu("sáu","sau","șase"), _, n("giờ","ziou","ora"), _,
+         n("tối","toi","seara"), ". ",
+         p("Tôi","toi","eu"), _, a("rất","rat","foarte"), _, vb("ngưỡng mộ","nguong mo","îl admir pe"), _,
+         n("anh","an","fratele"), _, nm("Nam","nam","Nam"), "."] }
+  ]
+},
+{
+  num:"Chương Bốn", viet:"Ngôi nhà của Hoa", sub:"Casa lui Hoa",
+  paras:[
+    { ro:"Casa mea este pe strada Nguyễn Du. Casa are trei etaje. Proprietara mea se numește bà Hương. Bà Hương este o doamnă de șaizeci de ani din Hanoi. Ea este foarte bună cu mine.",
+      t:[n("Nhà","nya","Casa"), _, p("tôi","toi","mea"), _, p("ở","o","este pe"), _,
+         n("phố","fo","strada"), _, nm("Nguyễn Du","nguyen zu","Nguyễn Du"), ". ",
+         n("Nhà","nya","Casa"), _, vb("có","ko","are"), _, nu("ba","ba","trei"), _, n("tầng","tang","etaje"), ". ",
+         n("Chủ nhà","chu nya","Proprietara"), _, p("của","kua","mea"), _, vb("tên là","ten la","se numește"), _,
+         n("bà","ba","doamna"), _, nm("Hương","huong","Hương"), ". ",
+         n("Bà","ba","Doamna"), _, nm("Hương","huong","Hương"), _, vb("là","la","este"), _,
+         c("một","mot","o"), _, n("người","nguoi","doamnă"), _, nu("sáu mươi","sau muoi","de șaizeci"), _,
+         n("tuổi","tuoi","de ani"), _, n("người Hà Nội","nguoi ha noi","din Hanoi"), ". ",
+         n("Bà","ba","Ea"), _, a("rất","rat","foarte"), _, a("tốt","tot","bună"), _,
+         p("với","voi","cu"), _, p("tôi","toi","mine"), "."] },
+    { ro:"Salonul casei mele este spațios și frumos. În salon există un televizor mare. Există și o masă de lemn și șase scaune. Pereții salonului sunt albi. Îmi place salonul casei mele.",
+      t:[n("Phòng khách","fong khak","Salonul"), _, n("nhà","nya","casei"), _, p("tôi","toi","mele"), _,
+         a("rộng","rong","spațios"), _, cj("và","va","și"), _, a("đẹp","dep","frumos"), ". ",
+         p("Trong","trong","În"), _, n("phòng khách","fong khak","salon"), _, vb("có","ko","există"), _,
+         c("một","mot","un"), _, c("cái","kai","(clasificator)"), _, n("ti vi","ti vi","televizor"), _, a("lớn","lon","mare"), ". ",
+         a("Cũng","kung","De asemenea"), _, vb("có","ko","există"), _, c("một","mot","o"), _,
+         c("cái","kai","(clasificator)"), _, n("bàn","ban","masă"), _, n("gỗ","go","de lemn"), _,
+         cj("và","va","și"), _, nu("sáu","sau","șase"), _, c("cái","kai","(clasificator)"), _,
+         n("ghế","ge","scaune"), ". ",
+         n("Tường","tuong","Pereții"), _, n("phòng khách","fong khak","salonului"), _, vb("màu","mau","sunt de culoare"), _,
+         a("trắng","trang","albi"), ". ",
+         p("Tôi","toi","eu"), _, a("rất","rat","foarte"), _, vb("thích","tik","îmi place"), _,
+         n("phòng khách","fong khak","salonul"), _, n("nhà","nya","casei"), _, p("mình","min","mele"), "."] },
+    { ro:"Dormitorul meu este mai mic decât salonul, dar este frumos și cald. În dormitor există un pat, o masă și un dulap. Din dormitor pot vedea strada din Hanoi. Îmi place mult dormitorul meu.",
+      t:[n("Phòng ngủ","fong ngu","Dormitorul"), _, p("của","kua","meu"), _, a("nhỏ","nyo","mai mic"), _,
+         a("hơn","hon","decât"), _, n("phòng khách","fong khak","salonul"), ", ",
+         cj("nhưng","nhung","dar"), _, a("rất","rat","foarte"), _, a("đẹp","dep","frumos"), _,
+         cj("và","va","și"), _, a("ấm","am","cald"), ". ",
+         p("Trong","trong","În"), _, n("phòng ngủ","fong ngu","dormitor"), _, vb("có","ko","există"), _,
+         c("một","mot","un"), _, n("cái giường","kai giuong","pat"), ", ",
+         c("một","mot","o"), _, n("cái bàn","kai ban","masă"), _,
+         cj("và","va","și"), _, c("một","mot","un"), _, n("cái tủ","kai tu","dulap"), ". ",
+         p("Từ","tu","Din"), _, n("phòng ngủ","fong ngu","dormitor"), ", ",
+         p("tôi","toi","eu"), _, vb("có thể","ko te","pot"), _, vb("nhìn thấy","nhin tay","vedea"), _,
+         n("đường phố","duong fo","strada"), _, nm("Hà Nội","ha noi","Hanoi"), ". ",
+         p("Tôi","toi","eu"), _, a("rất","rat","foarte"), _, vb("thích","tik","îmi place"), _,
+         n("phòng ngủ","fong ngu","dormitorul"), _, p("của","kua","meu"), _, p("mình","min","meu"), "."] },
+    { ro:"Bucătăria casei mele este mică, dar are tot ce îi trebuie. În bucătărie există un frigider, un aragaz și o masă de mâncat. Bà Hương gătește foarte bine. În fiecare dimineață, ea gătește pentru mine. Sunt recunoscătoare față de bà Hương.",
+      t:[n("Phòng bếp","fong bep","Bucătăria"), _, n("nhà","nya","casei"), _, p("tôi","toi","mele"), _,
+         a("nhỏ","nyo","mică"), cj(", nhưng",", nhung",", dar"), _, vb("có","ko","are"), _,
+         a("đủ","du","tot ce îi trebuie"), ". ",
+         p("Trong","trong","În"), _, n("phòng bếp","fong bep","bucătărie"), _, vb("có","ko","există"), _,
+         c("cái","kai","(clasificator)"), _, n("tủ lạnh","tu lan","frigider"), ", ",
+         c("cái","kai","(clasificator)"), _, n("bếp","bep","aragaz"), _,
+         cj("và","va","și"), _, c("cái","kai","(clasificator)"), _, n("bàn ăn","ban an","masă de mâncat"), ". ",
+         n("Bà","ba","Doamna"), _, nm("Hương","huong","Hương"), _, vb("nấu ăn","nau an","gătește"), _,
+         a("rất","rat","foarte"), _, a("ngon","ngon","bine / delicios"), ". ",
+         a("Mỗi","moi","În fiecare"), _, n("buổi sáng","buoi sang","dimineață"), ", ",
+         n("bà","ba","ea"), _, vb("nấu","nau","gătește"), _, p("cho","cho","pentru"), _,
+         p("tôi","toi","mine"), _, vb("ăn","an","a mânca"), ". ",
+         p("Tôi","toi","eu"), _, a("rất","rat","foarte"), _, vb("biết ơn","biet on","sunt recunoscătoare față de"), _,
+         n("bà","ba","doamna"), _, nm("Hương","huong","Hương"), "."] }
+  ]
+},
+{
+  num:"Chương Năm", viet:"Buổi sáng và bát phở", sub:"Dimineața și bolul de phở",
+  paras:[
+    { ro:"În fiecare dimineață, mă trezesc la ora șase. Mă spăl pe față și mă îmbrac. Apoi cobor în bucătărie. Bà Hương de obicei gătește orez sau phở pentru micul meu dejun. Îmi place foarte mult să mănânc phở dimineața.",
+      t:[a("Mỗi","moi","În fiecare"), _, n("buổi sáng","buoi sang","dimineață"), ", ",
+         p("tôi","toi","eu"), _, vb("thức dậy","tuk zay","mă trezesc"), _,
+         a("lúc","luk","la ora"), _, nu("sáu","sau","șase"), _, n("giờ","ziou","ora"), ". ",
+         p("Tôi","toi","eu"), _, vb("rửa mặt","rua mat","mă spăl pe față"), _,
+         cj("và","va","și"), _, vb("mặc quần áo","mak kwan ao","mă îmbrac"), ". ",
+         a("Sau đó","sau do","Apoi"), ", ", p("tôi","toi","eu"), _, vb("xuống","suong","cobor în"), _,
+         n("phòng bếp","fong bep","bucătărie"), ". ",
+         n("Bà","ba","Doamna"), _, nm("Hương","huong","Hương"), _, a("thường","tuong","de obicei"), _,
+         vb("nấu","nau","gătește"), _, n("cơm","kom","orez"), _, a("hoặc","hoat","sau"), _,
+         n("phở","fo","phở"), _, p("cho","cho","pentru"), _, p("tôi","toi","mine"), _,
+         vb("ăn sáng","an sang","micul dejun"), ". ",
+         p("Tôi","toi","eu"), _, a("rất","rat","foarte"), _, vb("thích","tik","îmi place"), _,
+         vb("ăn","an","a mânca"), _, n("phở","fo","phở"), _, n("buổi sáng","buoi sang","dimineața"), "."] },
+    { ro:"Phở este un preparat tradițional al Hanoiului. Phở are supă aromată și tăiței moi. Phở cu vită este delicios. Phở cu pui este la fel de bun. Oamenii din Hanoi mănâncă phở în fiecare zi. Și eu mănânc phở în fiecare zi.",
+      t:[n("Phở","fo","Phở"), _, vb("là","la","este"), _, c("một","mot","un"), _,
+         n("món ăn","mon an","preparat"), _, a("truyền thống","truyen tong","tradițional"), _,
+         p("của","kua","al"), _, nm("Hà Nội","ha noi","Hanoiului"), ". ",
+         n("Phở","fo","Phở"), _, vb("có","ko","are"), _, n("nước dùng","nuok zung","supă"), _,
+         a("thơm","tom","aromată"), _, cj("và","va","și"), _, n("bánh phở","ban fo","tăiței de phở"), _,
+         a("mềm","mem","moi"), ". ",
+         n("Phở bò","fo bo","Phở cu vită"), _, a("rất","rat","foarte"), _, a("ngon","ngon","delicios"), ". ",
+         n("Phở gà","fo ga","Phở cu pui"), _, a("cũng","kung","la fel"), _, a("ngon","ngon","de bun"), _,
+         a("không kém","khong kem","nu mai puțin"), ". ",
+         n("Người","nguoi","Oamenii"), _, nm("Hà Nội","ha noi","din Hanoi"), _, vb("ăn","an","mănâncă"), _,
+         n("phở","fo","phở"), _, a("mỗi","moi","în fiecare"), _, n("ngày","ngay","zi"), ". ",
+         p("Tôi","toi","eu"), _, a("cũng","kung","și eu"), _, vb("ăn","an","mănânc"), _,
+         n("phở","fo","phở"), _, a("mỗi","moi","în fiecare"), _, n("ngày","ngay","zi"), "."] },
+    { ro:"Restaurantul de phở de lângă casa mea este foarte renumit. În fiecare dimineață, restaurantul are mulți oameni. Fratele medic Nam vine des să mănânce phở. Doamna Lan și fratele Nam le place să mănânce phở acolo. Îl întâlnesc des pe fratele Nam la restaurantul de phở.",
+      t:[n("Quán phở","kwan fo","Restaurantul de phở"), _, a("gần","gan","de lângă"), _,
+         n("nhà","nya","casa"), _, p("tôi","toi","mea"), _, a("rất","rat","foarte"), _,
+         a("nổi tiếng","noi tieng","renumit"), ". ",
+         a("Mỗi","moi","În fiecare"), _, n("buổi sáng","buoi sang","dimineață"), ", ",
+         n("quán","kwan","restaurantul"), _, vb("có","ko","are"), _, a("rất","rat","foarte"), _,
+         a("nhiều","nhieu","mulți"), _, n("người","nguoi","oameni"), _, vb("đến","den","care vin"), _,
+         vb("ăn","an","să mănânce"), ". ",
+         n("Bác sĩ","bak si","Fratele medic"), _, nm("Nam","nam","Nam"), _, a("cũng","kung","și el"), _,
+         a("thường","tuong","des"), _, vb("đến","den","vine la"), _, n("quán","kwan","restaurantul"), _,
+         a("này","nay","acesta"), _, vb("ăn","an","să mănânce"), _, n("phở","fo","phở"), ". ",
+         n("Cô","ko","Doamna"), _, nm("Lan","lan","Lan"), _, cj("và","va","și"), _,
+         n("anh","an","fratele"), _, nm("Nam","nam","Nam"), _, a("đều","deu","amândoi"), _,
+         vb("thích","tik","le place"), _, vb("ăn","an","să mănânce"), _, n("phở","fo","phở"), _,
+         p("ở","o","acolo"), _, a("đây","day","acolo"), ". ",
+         p("Tôi","toi","eu"), _, vb("gặp","gap","îl întâlnesc"), _, n("anh","an","fratele"), _,
+         nm("Nam","nam","Nam"), _, p("ở","o","la"), _, n("quán phở","kwan fo","restaurantul de phở"), _,
+         a("rất nhiều","rat nhieu","de foarte multe ori"), _, n("lần","lan","ori"), "."] },
+    { ro:"După micul dejun, merg la școală. Merg la școală cu motocicleta. Drumul de acasă până la școală durează aproximativ cincisprezece minute. Pe drum, văd Hanoiul frumos în lumina dimineții. Hanoiul dimineața este liniștit și frumos.",
+      t:[a("Sau khi","sau khi","După ce"), _, vb("ăn sáng","an sang","iau micul dejun"), ", ",
+         p("tôi","toi","eu"), _, vb("đi học","di hok","merg la școală"), ". ",
+         p("Tôi","toi","eu"), _, vb("đi","di","merg"), _, vb("học","hok","la școală"), _,
+         a("bằng","bang","cu"), _, n("xe máy","se may","motocicleta"), ". ",
+         n("Đường","duong","Drumul"), _, p("từ","tu","de la"), _,
+         n("nhà","nya","casă"), _, p("đến","den","până la"), _,
+         n("trường","truong","școală"), _, vb("mất","mat","durează"), _,
+         a("khoảng","khoang","aproximativ"), _, nu("mười lăm","muoi lam","cincisprezece"), _,
+         n("phút","fut","minute"), ". ",
+         p("Trên","tren","Pe"), _, n("đường","duong","drum"), ", ",
+         p("tôi","toi","eu"), _, vb("nhìn thấy","nhin tay","văd"), _,
+         nm("Hà Nội","ha noi","Hanoiul"), _, a("đẹp","dep","frumos"), _,
+         p("trong","trong","în"), _, n("buổi sáng","buoi sang","lumina dimineții"), ". ",
+         nm("Hà Nội","ha noi","Hanoiul"), _, n("buổi sáng","buoi sang","dimineața"), _,
+         a("rất","rat","foarte"), _, a("yên tĩnh","yen tin","liniștit"), _,
+         cj("và","va","și"), _, a("đẹp","dep","frumos"), "."] }
+  ]
+},
+{
+  num:"Chương Sáu", viet:"Lớp học tiếng Việt", sub:"Ora de vietnameză",
+  paras:[
+    { ro:"Studiez vietnameza la școală în fiecare zi. Clasa mea de vietnameză are zece studenți. Studenții vin din America, Japonia, Coreea de Sud și Franța. Cu toții vrem să studiem bine vietnameza.",
+      t:[p("Tôi","toi","eu"), _, vb("học","hok","studiez"), _, n("tiếng Việt","tieng viet","vietnameza"), _,
+         p("ở","o","la"), _, n("trường","truong","școală"), _, a("mỗi","moi","în fiecare"), _,
+         n("ngày","ngay","zi"), ". ",
+         n("Lớp","lop","Clasa"), _, vb("học","hok","de"), _, n("tiếng Việt","tieng viet","vietnameză"), _,
+         p("của","kua","mea"), _, vb("có","ko","are"), _, nu("mười","muoi","zece"), _,
+         n("sinh viên","sin vien","studenți"), ". ",
+         n("Sinh viên","sin vien","Studenții"), _, vb("đến","den","vin"), _, p("từ","tu","din"), _,
+         nm("Mỹ","mi","America"), ", ", nm("Nhật Bản","nhat ban","Japonia"), ", ",
+         nm("Hàn Quốc","han kuok","Coreea de Sud"), _, cj("và","va","și"), _,
+         nm("Pháp","fap","Franța"), ". ",
+         n("Chúng tôi","chung toi","Cu toții"), _, a("đều","deu","toți"), _,
+         vb("muốn","muon","vrem"), _, vb("học","hok","a studia"), _,
+         n("tiếng Việt","tieng viet","vietnameza"), _, a("tốt","tot","bine"), "."] },
+    { ro:"Doamna Lan predă vietnameza foarte frumos. Ea explică fiecare lecție clar. Studenții întreabă, doamna Lan răspunde. Nu știu vietnameza bine, dar vreau să știu. Studiez vietnameza în fiecare zi. Studiez și acasă după ce vin de la școală.",
+      t:[n("Cô","ko","Doamna"), _, nm("Lan","lan","Lan"), _, vb("dạy","zay","predă"), _,
+         n("tiếng Việt","tieng viet","vietnameza"), _, a("rất","rat","foarte"), _, a("hay","hay","frumos"), ". ",
+         n("Cô","ko","Ea"), _, vb("giải thích","ziai tik","explică"), _, a("mỗi","moi","fiecare"), _,
+         n("bài học","bai hok","lecție"), _, a("rõ ràng","ro rang","clar"), ". ",
+         n("Sinh viên","sin vien","Studenții"), _, vb("hỏi","hoi","întreabă"), ", ",
+         n("cô","ko","doamna"), _, nm("Lan","lan","Lan"), _, vb("trả lời","tra loi","răspunde"), ". ",
+         p("Tôi","toi","eu"), _, a("không","khong","nu"), _, vb("biết","biet","știu"), _,
+         n("tiếng Việt","tieng viet","vietnameza"), _, a("lắm","lam","bine / mult"), ", ",
+         cj("nhưng","nhung","dar"), _, p("tôi","toi","eu"), _, vb("muốn","muon","vreau"), _,
+         vb("biết","biet","să știu"), ". ",
+         p("Tôi","toi","eu"), _, vb("học","hok","studiez"), _, n("tiếng Việt","tieng viet","vietnameza"), _,
+         a("mỗi","moi","în fiecare"), _, n("ngày","ngay","zi"), ". ",
+         p("Tôi","toi","eu"), _, a("cũng","kung","și"), _, vb("học","hok","studiez"), _,
+         p("ở","o","acasă"), _, n("nhà","nya","acasă"), _,
+         a("sau khi","sau khi","după ce"), _, vb("đi học","di hok","vin de la școală"), _, vb("về","ve","acasă"), "."] },
+    { ro:"Astăzi, doamna Lan ne-a învățat cum să ne prezentăm. Anna a spus: «Mă numesc Anna. Sunt studentă din Franța.» Și eu am spus: «Mă numesc Hoa. Sunt o studentă americancă. Sunt foarte fericită să studiez vietnameza.»",
+      t:[n("Hôm nay","hom nay","Astăzi"), ", ",
+         n("cô","ko","doamna"), _, nm("Lan","lan","Lan"), _, vb("dạy","zay","ne-a învățat"), _,
+         n("chúng tôi","chung toi","pe noi"), _, vb("cách","kak","cum"), _,
+         vb("giới thiệu","zioi tieu","să ne prezentăm"), _, n("bản thân","ban tan","pe noi înșine"), ". ",
+         nm("Anna","an-na","Anna"), _, vb("nói","noi","a spus"), ": ",
+         "\"", p("Tôi","toi","eu"), _, vb("tên là","ten la","mă numesc"), _, nm("Anna","an-na","Anna"), ". ",
+         p("Tôi","toi","eu"), _, vb("là","la","sunt"), _, n("sinh viên","sin vien","studentă"), _,
+         p("từ","tu","din"), _, nm("Pháp","fap","Franța"), ".\" ",
+         p("Tôi","toi","eu"), _, a("cũng","kung","și eu"), _, vb("nói","noi","am spus"), ": ",
+         "\"", p("Tôi","toi","eu"), _, vb("tên là","ten la","mă numesc"), _, nm("Hoa","Hwa","Hoa"), ". ",
+         p("Tôi","toi","eu"), _, vb("là","la","sunt"), _, c("một","mot","o"), _,
+         n("sinh viên","sin vien","studentă"), _, n("người Mỹ","nguoi mi","americancă"), ". ",
+         p("Tôi","toi","eu"), _, a("rất","rat","foarte"), _, a("vui","vui","fericită"), _,
+         vb("được học","duok hok","să studiez"), _, n("tiếng Việt","tieng viet","vietnameza"), ".\""] },
+    { ro:"După ore, eu și Anna mergem la o cafenea de lângă școală. Discutăm despre lecția de astăzi. Vrem amândouă să vorbim vietnameza la fel de bine ca oamenii din Hanoi.",
+      t:[a("Sau giờ học","sau ziou hok","După ore"), ", ",
+         p("tôi","toi","eu"), _, cj("và","va","și"), _, nm("Anna","an-na","Anna"), _,
+         vb("đến","den","mergem la"), _, c("một","mot","o"), _, n("quán cà phê","kwan ka fe","cafenea"), _,
+         a("gần","gan","de lângă"), _, n("trường","truong","școală"), ". ",
+         n("Chúng tôi","chung toi","Noi"), _, vb("nói chuyện","noi chuyen","discutăm"), _,
+         p("về","ve","despre"), _, n("bài học","bai hok","lecția"), _, n("hôm nay","hom nay","de astăzi"), ". ",
+         n("Chúng tôi","chung toi","Noi amândouă"), _, vb("muốn","muon","vrem"), _,
+         vb("nói","noi","să vorbim"), _, n("tiếng Việt","tieng viet","vietnameza"), _,
+         a("tốt","tot","bine"), _, a("như","nhu","ca"), _, n("người","nguoi","oamenii"), _,
+         nm("Hà Nội","ha noi","din Hanoi"), "."] }
+  ]
+},
+{
+  num:"Chương Bảy", viet:"Bữa cơm cùng bạn bè", sub:"Masa cu prietenii",
+  paras:[
+    { ro:"La weekend, îi vizitez pe doamna Lan și pe fratele Nam acasă la ei. Casa lor este foarte frumoasă și are multe camere. Salonul este spațios. În salon există multe cărți și tablouri frumoase.",
+      t:[n("Cuối tuần","cuoi tuan","La weekend"), ", ",
+         p("tôi","toi","eu"), _, vb("đến","den","îi vizitez pe"), _,
+         n("cô","ko","doamna"), _, nm("Lan","lan","Lan"), _, cj("và","va","și"), _,
+         n("anh","an","fratele"), _, nm("Nam","nam","Nam"), _, p("ở","o","acasă la"), _,
+         n("nhà","nya","ei"), _, p("họ","ho","ei"), ". ",
+         n("Nhà","nya","Casa"), _, p("của","kua","lor"), _, p("họ","ho","ei"), _,
+         a("rất","rat","foarte"), _, a("đẹp","dep","frumoasă"), _, cj("và","va","și"), _,
+         vb("có","ko","are"), _, a("nhiều","nhieu","multe"), _, n("phòng","fong","camere"), ". ",
+         n("Phòng khách","fong khak","Salonul"), _, a("rất","rat","foarte"), _, a("rộng","rong","spațios"), ". ",
+         p("Trong","trong","În"), _, n("phòng","fong","salon"), _, vb("có","ko","există"), _,
+         a("nhiều","nhieu","multe"), _, n("sách","sak","cărți"), _, cj("và","va","și"), _,
+         n("bức tranh","buk tran","tablouri"), _, a("đẹp","dep","frumoase"), "."] },
+    { ro:"Mâncăm orez împreună. Masa are multe feluri delicioase. Există phở, orez prăjit, legume sotate și pește prăjit. Mâncăm și discutăm vesel. Fratele Nam mă întreabă despre viața mea în America.",
+      t:[n("Chúng tôi","chung toi","Noi"), _, vb("ăn","an","mâncăm"), _, n("cơm","kom","orez"), _,
+         p("cùng nhau","kung nhau","împreună"), ". ",
+         n("Bữa cơm","bua kom","Masa"), _, vb("có","ko","are"), _, a("nhiều","nhieu","multe"), _,
+         n("món","mon","feluri"), _, a("ngon","ngon","delicioase"), ". ",
+         vb("Có","ko","Există"), _, n("phở","fo","phở"), ", ",
+         n("cơm rang","kom rang","orez prăjit"), ", ",
+         n("rau xào","rau sao","legume sotate"), _, cj("và","va","și"), _,
+         n("cá chiên","ka chien","pește prăjit"), ". ",
+         n("Chúng tôi","chung toi","Noi"), _, vb("ăn","an","mâncăm"), _, cj("và","va","și"), _,
+         vb("nói chuyện","noi chuyen","discutăm"), _, a("rất","rat","foarte"), _, a("vui","vui","vesel"), ". ",
+         n("Anh","an","Fratele"), _, nm("Nam","nam","Nam"), _, vb("hỏi","hoi","mă întreabă"), _,
+         p("tôi","toi","pe mine"), _, p("về","ve","despre"), _, n("cuộc sống","kuok song","viața"), _,
+         p("của","kua","mea"), _, p("tôi","toi","mea"), _, p("ở","o","în"), _, nm("Mỹ","mi","America"), "."] },
+    { ro:"După masă, mergem cu toții la plimbare prin Hanoi. Hanoiul noaptea este foarte frumos. Lacul Tây și Lacul Hoàn Kiếm sunt ambele frumoase. Oamenii din Hanoi se plimbă și discută la lac. Îi spun doamnei Lan că îmi place mult Hanoiul.",
+      t:[a("Sau bữa ăn","sau bua an","După masă"), ", ",
+         n("chúng tôi","chung toi","cu toții"), _, vb("đi bộ","di bo","mergem la plimbare"), _,
+         p("quanh","kwanh","prin"), _, nm("Hà Nội","ha noi","Hanoi"), ". ",
+         nm("Hà Nội","ha noi","Hanoiul"), _, n("buổi tối","buoi toi","noaptea"), _,
+         a("rất","rat","foarte"), _, a("đẹp","dep","frumos"), ". ",
+         n("Hồ Tây","ho tay","Lacul Tây"), _, cj("và","va","și"), _,
+         n("Hồ Hoàn Kiếm","ho hwan kiem","Lacul Hoàn Kiếm"), _, a("đều","deu","ambele"), _,
+         a("đẹp","dep","frumoase"), ". ",
+         n("Người","nguoi","Oamenii"), _, nm("Hà Nội","ha noi","din Hanoi"), _,
+         vb("đi bộ","di bo","se plimbă"), _, cj("và","va","și"), _,
+         vb("nói chuyện","noi chuyen","discută"), _, p("ở","o","la"), _, n("hồ","ho","lac"), ". ",
+         p("Tôi","toi","eu"), _, vb("nói","noi","îi spun"), _, p("với","voi","doamnei"), _,
+         n("cô","ko","doamnei"), _, nm("Lan","lan","Lan"), _, a("rằng","rang","că"), _,
+         p("tôi","toi","eu"), _, a("rất","rat","mult"), _, vb("thích","tik","îmi place"), _,
+         nm("Hà Nội","ha noi","Hanoiul"), "."] },
+    { ro:"Fratele Nam spune că Hanoiul este cel mai frumos oraș din lume. Știu că am întâlnit niște prieteni foarte buni în Hanoi. Îi mulțumesc doamnei Lan și fratelui Nam foarte mult.",
+      t:[n("Anh","an","Fratele"), _, nm("Nam","nam","Nam"), _, vb("nói","noi","spune"), _,
+         a("rằng","rang","că"), _, nm("Hà Nội","ha noi","Hanoiul"), _, vb("là","la","este"), _,
+         n("thành phố","tan fo","orașul"), _, a("đẹp nhất","dep nhat","cel mai frumos"), _,
+         p("trên","tren","din"), _, n("thế giới","te zioi","lume"), ". ",
+         p("Tôi","toi","eu"), _, vb("biết","biet","știu"), _, a("rằng","rang","că"), _,
+         p("tôi","toi","eu"), _, a("đã","da","am"), _, vb("gặp","gap","întâlnit"), _,
+         n("những người bạn","nhung nguoi ban","niște prieteni"), _, a("rất","rat","foarte"), _,
+         a("tốt","tot","buni"), _, p("ở","o","în"), _, nm("Hà Nội","ha noi","Hanoi"), ". ",
+         p("Tôi","toi","eu"), _, vb("cảm ơn","kam on","îi mulțumesc"), _,
+         n("cô","ko","doamnei"), _, nm("Lan","lan","Lan"), _, cj("và","va","și"), _,
+         n("anh","an","fratelui"), _, nm("Nam","nam","Nam"), _, a("rất nhiều","rat nhieu","foarte mult"), "."] }
+  ]
+},
+{
+  num:"Chương Tám", viet:"Hà Nội, nhà của tôi", sub:"Hanoi, casa mea",
+  paras:[
+    { ro:"Am stat în Hanoi de șase luni. Studiez vietnameza în fiecare zi. Știu mai multe cuvinte vietnameze decât înainte. Pot să discut cu oamenii din Hanoi. Sunt foarte fericită. Hanoiul a devenit a doua mea casă.",
+      t:[p("Tôi","toi","eu"), _, a("đã","da","am stat"), _, p("ở","o","în"), _,
+         nm("Hà Nội","ha noi","Hanoi"), _, vb("được","duok","de"), _, nu("sáu","sau","șase"), _,
+         n("tháng","tang","luni"), ". ",
+         p("Tôi","toi","eu"), _, vb("học","hok","studiez"), _, n("tiếng Việt","tieng viet","vietnameza"), _,
+         a("mỗi","moi","în fiecare"), _, n("ngày","ngay","zi"), ". ",
+         p("Tôi","toi","eu"), _, vb("biết","biet","știu"), _, a("nhiều","nhieu","mai multe"), _,
+         n("từ tiếng Việt","tu tieng viet","cuvinte vietnameze"), _, a("hơn trước","hon truok","decât înainte"), ". ",
+         p("Tôi","toi","eu"), _, vb("có thể","ko te","pot"), _, vb("nói chuyện","noi chuyen","discuta"), _,
+         p("với","voi","cu"), _, n("người","nguoi","oamenii"), _, nm("Hà Nội","ha noi","din Hanoi"), ". ",
+         p("Tôi","toi","eu"), _, a("rất","rat","foarte"), _, a("vui","vui","fericită"), ". ",
+         nm("Hà Nội","ha noi","Hanoiul"), _, a("đã","da","a"), _, vb("trở thành","tro tan","devenit"), _,
+         n("ngôi nhà","ngoi nya","casa"), _, n("thứ hai","tu hai","a doua"), _, p("của","kua","a"), _,
+         p("tôi","toi","mea"), "."] },
+    { ro:"Am mulți prieteni în Hanoi. Doamna Lan este cel mai bun prieten al meu. Fratele Nam este de asemenea un prieten foarte bun. Bà Hương este și ea foarte bună cu mine. Îmi place să trăiesc în Hanoi.",
+      t:[p("Tôi","toi","eu"), _, vb("có","ko","am"), _, a("nhiều","nhieu","mulți"), _,
+         n("bạn","ban","prieteni"), _, p("ở","o","în"), _, nm("Hà Nội","ha noi","Hanoi"), ". ",
+         n("Cô","ko","Doamna"), _, nm("Lan","lan","Lan"), _, vb("là","la","este"), _,
+         n("người bạn","nguoi ban","prietenul"), _, a("tốt nhất","tot nhat","cel mai bun"), _,
+         p("của","kua","al"), _, p("tôi","toi","meu"), ". ",
+         n("Anh","an","Fratele"), _, nm("Nam","nam","Nam"), _, a("cũng","kung","de asemenea"), _,
+         vb("là","la","este"), _, c("một","mot","un"), _, n("người bạn","nguoi ban","prieten"), _,
+         a("rất","rat","foarte"), _, a("tốt","tot","bun"), ". ",
+         n("Bà","ba","Doamna"), _, nm("Hương","huong","Hương"), _, a("cũng","kung","și ea"), _,
+         a("rất","rat","foarte"), _, a("tốt","tot","bună"), _, p("với","voi","cu"), _, p("tôi","toi","mine"), ". ",
+         p("Tôi","toi","eu"), _, vb("thích","tik","îmi place"), _, vb("sống","song","a trăi"), _,
+         p("ở","o","în"), _, nm("Hà Nội","ha noi","Hanoi"), "."] },
+    { ro:"În fiecare dimineață, merg să mănânc phở. În fiecare după-amiază, studiez vietnameza la școală. În fiecare seară, mă plimb în jurul lacului Hoàn Kiếm. Hanoiul este întotdeauna frumos. Iubesc Hanoiul.",
+      t:[a("Mỗi","moi","În fiecare"), _, n("buổi sáng","buoi sang","dimineață"), ", ",
+         p("tôi","toi","eu"), _, vb("đi ăn","di an","merg să mânânc"), _, n("phở","fo","phở"), ". ",
+         a("Mỗi","moi","În fiecare"), _, n("buổi chiều","buoi chieu","după-amiază"), ", ",
+         p("tôi","toi","eu"), _, vb("học","hok","studiez"), _, n("tiếng Việt","tieng viet","vietnameza"), _,
+         p("ở","o","la"), _, n("trường","truong","școală"), ". ",
+         a("Mỗi","moi","În fiecare"), _, n("buổi tối","buoi toi","seară"), ", ",
+         p("tôi","toi","eu"), _, vb("đi bộ","di bo","mă plimb"), _, p("quanh","kwanh","în jurul"), _,
+         n("Hồ Hoàn Kiếm","ho hwan kiem","lacului Hoàn Kiếm"), ". ",
+         nm("Hà Nội","ha noi","Hanoiul"), _, a("lúc nào","luk nao","întotdeauna"), _,
+         a("cũng","kung","mereu"), _, a("đẹp","dep","frumos"), ". ",
+         p("Tôi","toi","eu"), _, vb("yêu","yeu","iubesc"), _, nm("Hà Nội","ha noi","Hanoiul"), "."] },
+    { ro:"Scriu o scrisoare părinților mei din America. Le povestesc despre Hanoi, despre doamna Lan, despre fratele Nam, despre bà Hương. Părinții mei vor să vină în Hanoi să mă viziteze. Sunt foarte fericită. Hanoiul va fi întotdeauna casa mea.",
+      t:[p("Tôi","toi","eu"), _, vb("viết thư","viet tu","scriu o scrisoare"), _,
+         p("cho","cho","părinților"), _, n("bố mẹ","bo me","părinților"), _, p("tôi","toi","mei"), _,
+         p("ở","o","din"), _, nm("Mỹ","mi","America"), ". ",
+         p("Tôi","toi","eu"), _, vb("kể","ke","le povestesc"), _, p("về","ve","despre"), _,
+         nm("Hà Nội","ha noi","Hanoi"), ", ", p("về","ve","despre"), _,
+         n("cô","ko","doamna"), _, nm("Lan","lan","Lan"), ", ", p("về","ve","despre"), _,
+         n("anh","an","fratele"), _, nm("Nam","nam","Nam"), ", ", p("về","ve","despre"), _,
+         n("bà","ba","doamna"), _, nm("Hương","huong","Hương"), ". ",
+         n("Bố mẹ","bo me","Părinții"), _, p("tôi","toi","mei"), _, vb("muốn","muon","vor"), _,
+         vb("đến","den","să vină în"), _, nm("Hà Nội","ha noi","Hanoi"), _,
+         vb("thăm","tam","să mă viziteze"), _, p("tôi","toi","pe mine"), ". ",
+         p("Tôi","toi","eu"), _, a("rất","rat","foarte"), _, a("vui","vui","fericită"), ". ",
+         nm("Hà Nội","ha noi","Hanoiul"), _, a("sẽ","se","va fi"), _,
+         a("luôn","luon","întotdeauna"), _, vb("là","la","este"), _,
+         n("nhà","nya","casa"), _, p("của","kua","a"), _, p("tôi","toi","mea"), "."] }
+  ]
+}
+,
+{
+  num:"Chương Chín", viet:"Gia đình Hoa đến thăm", sub:"Familia lui Hoa vine în vizită",
+  paras:[
+    { ro:"Mama și tata meu au venit în Hanoi să mă viziteze. Tata meu este inginer. Mama mea este profesoară. Ei locuiesc în California, America. Am fost atât de fericită când i-am văzut pe amândoi.",
+      t:[n("Mẹ","me","mama"), _, cj("và","va","și"), _, n("bố","bo","tata"), _, p("tôi","toi","meu"), _,
+         vb("đến","den","au venit la"), _, nm("Hà Nội","ha noi","Hanoi"), _, vb("thăm","tam","să mă viziteze"), _, p("tôi","toi","pe mine"), ". ",
+         n("Bố","bo","Tata"), _, p("tôi","toi","meu"), _, vb("là","la","este"), _, n("kỹ sư","ki su","inginer"), ". ",
+         n("Mẹ","me","Mama"), _, p("tôi","toi","mea"), _, vb("là","la","este"), _, n("giáo viên","ziao vien","profesoară"), ". ",
+         p("Họ","ho","Ei"), _, vb("sống","song","locuiesc"), _, p("ở","o","în"), _, nm("California","ka-li-fo-nia","California"), ", ", nm("Mỹ","mi","America"), ". ",
+         p("Tôi","toi","eu"), _, a("rất","rat","atât de"), _, a("vui","vui","fericită"), _, cj("khi","khi","când"), _,
+         vb("gặp","gap","i-am văzut pe"), _, p("họ","ho","amândoi"), "."] },
+    { ro:"Fratele meu se numește Tommy. Tommy are douăzeci și doi de ani. El este student la universitate în America. Tommy a venit și el în Hanoi cu mama și tata. Eu și Tommy suntem prieteni buni. El vrea să vadă Hanoiul.",
+      t:[n("Anh trai","an trai","Fratele"), _, p("tôi","toi","meu"), _, vb("tên là","ten la","se numește"), _, nm("Tommy","to-mi","Tommy"), ". ",
+         nm("Tommy","to-mi","Tommy"), _, vb("là","la","are"), _, nu("hai mươi hai","hai muoi hai","douăzeci și doi"), _, n("tuổi","tuoi","de ani"), ". ",
+         n("Anh ấy","an ay","El"), _, vb("là","la","este"), _, n("sinh viên","sin vien","student"), _,
+         p("ở","o","la"), _, n("đại học","dai hok","universitate"), _, p("ở","o","în"), _, nm("Mỹ","mi","America"), ". ",
+         nm("Tommy","to-mi","Tommy"), _, a("cũng","kung","de asemenea"), _, vb("đến","den","a venit la"), _, nm("Hà Nội","ha noi","Hanoi"), _,
+         p("với","voi","cu"), _, n("mẹ","me","mama"), _, cj("và","va","și"), _, n("bố","bo","tata"), _, p("tôi","toi","meu"), ". ",
+         p("Tôi","toi","eu"), _, cj("và","va","și"), _, nm("Tommy","to-mi","Tommy"), _, vb("là","la","suntem"), _, n("bạn","ban","prieteni"), _, a("tốt","tot","buni"), ". ",
+         n("Anh ấy","an ay","El"), _, vb("muốn","muon","vrea"), _, vb("xem","sem","să vadă"), _, nm("Hà Nội","ha noi","Hanoiul"), "."] },
+    { ro:"Doamna Lan și fratele Nam i-au invitat pe mama și tata la ei acasă. Ei au mâncat împreună. Doamna Lan a gătit phở cu vită și orez prăjit. Mama mea a spus că mâncarea este delicioasă. Fratele Nam i-a arătat tatălui meu spitalul Bach Mai. Tata a spus că spitalul este mare și modern.",
+      t:[n("Cô","ko","Doamna"), _, nm("Lan","lan","Lan"), _, cj("và","va","și"), _, n("anh","an","fratele"), _, nm("Nam","nam","Nam"), _,
+         vb("mời","moi","i-au invitat pe"), _, n("mẹ","me","mama"), _, cj("và","va","și"), _, n("bố","bo","tata"), _, p("tôi","toi","meu"), _,
+         p("đến","den","la"), _, n("nhà","nya","ei"), _, p("họ","ho","acasă"), ". ",
+         p("Họ","ho","Ei"), _, vb("ăn","an","au mâncat"), _, a("cùng nhau","kung nhau","împreună"), ". ",
+         n("Cô","ko","Doamna"), _, nm("Lan","lan","Lan"), _, vb("nấu","nau","a gătit"), _, n("phở bò","fo bo","phở cu vită"), _,
+         cj("và","va","și"), _, n("cơm rang","kom rang","orez prăjit"), ". ",
+         n("Mẹ","me","Mama"), _, p("tôi","toi","mea"), _, vb("nói","noi","a spus"), _, a("rằng","rang","că"), _,
+         n("món ăn","mon an","mâncarea"), _, a("rất","rat","este"), _, a("ngon","ngon","delicioasă"), ". ",
+         n("Anh","an","Fratele"), _, nm("Nam","nam","Nam"), _, vb("đưa","dua","i-a arătat"), _, n("bố","bo","tatălui"), _, p("tôi","toi","meu"), _,
+         vb("xem","sem","să vadă"), _, n("bệnh viện","ben vien","spitalul"), _, nm("Bạch Mai","bak mai","Bach Mai"), ". ",
+         n("Bố","bo","Tata"), _, p("tôi","toi","meu"), _, vb("nói","noi","a spus"), _, a("rằng","rang","că"), _,
+         n("bệnh viện","ben vien","spitalul"), _, vb("rất","rat","este foarte"), _, a("lớn","lon","mare"), _, cj("và","va","și"), _, a("hiện đại","hien dai","modern"), "."] },
+    { ro:"Mama m-a întrebat dacă îmi place Hanoiul. Am spus că îmi place foarte mult Hanoiul. Tata m-a întrebat dacă știu vietnameza bine. Am spus că studiez în fiecare zi și că pot vorbi puțin. Mama și tata sunt mândri de mine. Eu sunt fericită că familia mea a venit în Hanoi.",
+      t:[n("Mẹ","me","Mama"), _, vb("hỏi","hoi","m-a întrebat"), _, p("tôi","toi","pe mine"), _,
+         vb("có thích","ko tik","dacă îmi place"), _, nm("Hà Nội","ha noi","Hanoiul"), _, a("không","khong","sau nu"), ". ",
+         p("Tôi","toi","eu"), _, vb("nói","noi","am spus"), _, p("tôi","toi","eu"), _, a("rất","rat","foarte"), _,
+         vb("thích","tik","îmi place"), _, nm("Hà Nội","ha noi","Hanoiul"), ". ",
+         n("Bố","bo","Tata"), _, vb("hỏi","hoi","m-a întrebat"), _, p("tôi","toi","pe mine"), _,
+         vb("có biết","ko biet","dacă știu"), _, n("tiếng Việt","tieng viet","vietnameza"), _, a("chưa","chua","deja"), ". ",
+         p("Tôi","toi","eu"), _, vb("nói","noi","am spus"), _, p("tôi","toi","eu"), _, vb("học","hok","studiez"), _,
+         a("mỗi","moi","în fiecare"), _, n("ngày","ngay","zi"), _, cj("và","va","și"), _,
+         vb("có thể","ko the","pot"), _, vb("nói","noi","vorbi"), _, vb("được","duok","puțin"), _, n("một chút","mot chut","puțin"), ". ",
+         n("Mẹ","me","Mama"), _, cj("và","va","și"), _, n("bố","bo","tata"), _, a("rất","rat","sunt foarte"), _,
+         a("tự hào","tu hao","mândri"), _, p("về","ve","de"), _, p("tôi","toi","mine"), ". ",
+         p("Tôi","toi","eu"), _, a("vui","vui","sunt fericită"), _, a("vì","vi","că"), _,
+         n("gia đình","zia din","familia"), _, p("tôi","toi","mea"), _, vb("đến","den","a venit la"), _, nm("Hà Nội","ha noi","Hanoi"), "."] }
+  ]
+},
+{
+  num:"Chương Mười", viet:"Bạn bè và nghề nghiệp", sub:"Prieteni și profesii",
+  paras:[
+    { ro:"În clasa mea de vietnameză sunt mulți studenți interesanți. Fiecare are o profesie diferită. Minh este inginer la o companie mare. Peter este polițist în Germania. Anna este studentă din Franța. Kenji este cântăreț din Japonia.",
+      t:[p("Trong","trong","În"), _, n("lớp","lop","clasa"), _, n("tiếng Việt","tieng viet","de vietnameză"), _, p("của","kua","mea"), _,
+         vb("có","ko","sunt"), _, a("nhiều","nhieu","mulți"), _, n("sinh viên","sin vien","studenți"), _, a("thú vị","tu vi","interesanți"), ". ",
+         a("Mỗi","moi","Fiecare"), _, n("người","nguoi","persoană"), _, vb("có","ko","are"), _, c("một","mot","o"), _,
+         n("nghề nghiệp","nge ngiep","profesie"), _, a("khác nhau","khak nhau","diferită"), ". ",
+         nm("Minh","min","Minh"), _, vb("là","la","este"), _, n("kỹ sư","ki su","inginer"), _,
+         p("ở","o","la"), _, c("một","mot","o"), _, n("công ty","kong ti","companie"), _, a("lớn","lon","mare"), ". ",
+         nm("Peter","pe-ter","Peter"), _, vb("là","la","este"), _, n("cảnh sát","kan sat","polițist"), _,
+         p("ở","o","în"), _, nm("Đức","duk","Germania"), ". ",
+         nm("Anna","an-na","Anna"), _, vb("là","la","este"), _, n("sinh viên","sin vien","studentă"), _,
+         p("từ","tu","din"), _, nm("Pháp","fap","Franța"), ". ",
+         nm("Kenji","ken-ji","Kenji"), _, vb("là","la","este"), _, n("ca sĩ","ka si","cântăreț"), _,
+         p("từ","tu","din"), _, nm("Nhật Bản","nhat ban","Japonia"), "."] },
+    { ro:"Carlos din Mexic este bucătar-șef la un restaurant vietnamez. El gătește phở și bún bò foarte bine. Sophie din Franța este artistă. Ea pictează tablouri frumoase cu Hanoiul. David din America este șofer de taxi în Hanoi. El cunoaște toate străzile din Hanoi.",
+      t:[nm("Carlos","kar-los","Carlos"), _, p("từ","tu","din"), _, nm("Mexico","me-hi-ko","Mexic"), _, vb("là","la","este"), _,
+         n("đầu bếp","dau bep","bucătar-șef"), _, p("ở","o","la"), _, c("một","mot","un"), _,
+         n("nhà hàng","nya hang","restaurant"), _, n("tiếng Việt","tieng viet","vietnamez"), ". ",
+         n("Anh ấy","an ay","El"), _, vb("nấu","nau","gătește"), _, n("phở","fo","phở"), _, cj("và","va","și"), _,
+         n("bún bò","bun bo","bún bò"), _, a("rất","rat","foarte"), _, a("ngon","ngon","bine"), ". ",
+         nm("Sophie","so-fi","Sophie"), _, p("từ","tu","din"), _, nm("Pháp","fap","Franța"), _, vb("là","la","este"), _,
+         n("họa sĩ","hoa si","artistă"), ". ",
+         n("Cô ấy","ko ay","Ea"), _, vb("vẽ","ve","pictează"), _, n("bức tranh","buk tran","tablouri"), _, a("đẹp","dep","frumoase"), _,
+         p("về","ve","cu"), _, nm("Hà Nội","ha noi","Hanoiul"), ". ",
+         nm("David","da-vid","David"), _, p("từ","tu","din"), _, nm("Mỹ","mi","America"), _, vb("là","la","este"), _,
+         n("lái xe","lai se","șofer"), _, n("taxi","tak-si","de taxi"), _, p("ở","o","în"), _, nm("Hà Nội","ha noi","Hanoi"), ". ",
+         n("Anh ấy","an ay","El"), _, vb("biết","biet","cunoaște"), _, a("tất cả","tat ka","toate"), _,
+         n("đường phố","duong fo","străzile"), _, p("ở","o","din"), _, nm("Hà Nội","ha noi","Hanoi"), "."] },
+    { ro:"Cô Lan ne-a întrebat pe toți: «Voi ce profesie vreți să aveți?» Minh a spus că vrea să fie inginer bun. Anna a spus că vrea să fie profesoară de franceză. Eu am spus că vreau să fie scriitoare. Cô Lan a spus că toate profesiile sunt frumoase dacă lucrezi cu drag.",
+      t:[n("Cô","ko","Doamna"), _, nm("Lan","lan","Lan"), _, vb("hỏi","hoi","ne-a întrebat pe"), _, a("tất cả","tat ka","toți"), ": ",
+         "\"", n("Các bạn","kak ban","Voi"), _, vb("muốn","muon","vreți"), _, vb("làm","lam","să aveți"), _,
+         n("nghề nghiệp","nge ngiep","profesia"), _, a("gì","gi","ce"), _, p("trong","trong","în"), _,
+         n("tương lai","tuong lai","viitor"), "?\" ",
+         nm("Minh","min","Minh"), _, vb("nói","noi","a spus"), _, n("anh ấy","an ay","el"), _,
+         vb("muốn","muon","vrea"), _, vb("làm","lam","să fie"), _, n("kỹ sư","ki su","inginer"), _, a("giỏi","zioi","bun"), ". ",
+         nm("Anna","an-na","Anna"), _, vb("nói","noi","a spus"), _, n("cô ấy","ko ay","ea"), _,
+         vb("muốn","muon","vrea"), _, vb("làm","lam","să fie"), _, n("giáo viên","ziao vien","profesoară"), _,
+         n("tiếng Pháp","tieng fap","de franceză"), ". ",
+         p("Tôi","toi","eu"), _, vb("nói","noi","am spus"), _, p("tôi","toi","eu"), _,
+         vb("muốn","muon","vreau"), _, vb("làm","lam","să fiu"), _, n("nhà văn","nya van","scriitoare"), ". ",
+         n("Cô","ko","Doamna"), _, nm("Lan","lan","Lan"), _, vb("nói","noi","a spus"), _,
+         a("tất cả","tat ka","toate"), _, n("nghề nghiệp","nge ngiep","profesiile"), _, vb("đều","deu","sunt toate"), _,
+         a("đẹp","dep","frumoase"), _, cj("nếu","neu","dacă"), _, vb("làm","lam","lucrezi"), _, p("với","voi","cu"), _,
+         n("tình yêu","tin yeu","drag"), "."] },
+    { ro:"După clasă, eu, Minh și Carlos am mers la un restaurant. Carlos a ales mâncarea. El a spus că la restaurant există phở cu vită, bún bò și cơm tấm. Toți am ales phở cu vită. Carlos a spus că phở cu vită este cea mai bună mâncare din lume. Am râs toți împreună.",
+      t:[a("Sau giờ học","sau ziou hok","După clasă"), ", ",
+         p("tôi","toi","eu"), ", ", nm("Minh","min","Minh"), _, cj("và","va","și"), _, nm("Carlos","kar-los","Carlos"), _,
+         vb("đi","di","am mers la"), _, c("một","mot","un"), _, n("nhà hàng","nya hang","restaurant"), ". ",
+         nm("Carlos","kar-los","Carlos"), _, vb("chọn","chon","a ales"), _, n("món ăn","mon an","mâncarea"), ". ",
+         n("Anh ấy","an ay","El"), _, vb("nói","noi","a spus"), _, a("rằng","rang","că"), _,
+         p("ở","o","la"), _, n("nhà hàng","nya hang","restaurant"), _, vb("có","ko","există"), _,
+         n("phở bò","fo bo","phở cu vită"), ", ", n("bún bò","bun bo","bún bò"), _, cj("và","va","și"), _,
+         n("cơm tấm","kom tam","cơm tấm"), ". ",
+         n("Tất cả","tat ka","Toți"), _, p("chúng tôi","chung toi","noi"), _, vb("chọn","chon","am ales"), _,
+         n("phở bò","fo bo","phở cu vită"), ". ",
+         nm("Carlos","kar-los","Carlos"), _, vb("nói","noi","a spus"), _, a("rằng","rang","că"), _,
+         n("phở bò","fo bo","phở cu vită"), _, vb("là","la","este"), _, n("món ăn","mon an","mâncarea"), _,
+         a("ngon nhất","ngon nhat","cea mai bună"), _, p("trên","tren","din"), _, n("thế giới","te zioi","lume"), ". ",
+         n("Chúng tôi","chung toi","Noi"), _, a("đều","deu","toți"), _, vb("cười","cuoi","am râs"), _, a("cùng nhau","kung nhau","împreună"), "."] }
+  ]
+},
+{
+  num:"Chương Mười Một", viet:"Đi siêu thị", sub:"La supermarket",
+  paras:[
+    { ro:"Sâmbătă dimineața, eu și Anna mergem la supermarket. Supermarketul este mare și are multe lucruri. Anna vrea să cumpere fructe. Eu vreau să cumpăr legume și carne. Supermarketul este aproape de școala noastră.",
+      t:[n("Sáng","sang","Dimineața"), _, n("thứ Bảy","tu bay","de sâmbătă"), ", ",
+         p("tôi","toi","eu"), _, cj("và","va","și"), _, nm("Anna","an-na","Anna"), _,
+         vb("đi","di","mergem la"), _, n("siêu thị","sieu ti","supermarket"), ". ",
+         n("Siêu thị","sieu ti","Supermarketul"), _, vb("rất","rat","este foarte"), _, a("lớn","lon","mare"), _,
+         cj("và","va","și"), _, vb("có","ko","are"), _, a("nhiều","nhieu","multe"), _, n("đồ","do","lucruri"), ". ",
+         nm("Anna","an-na","Anna"), _, vb("muốn","muon","vrea"), _, vb("mua","mua","să cumpere"), _, n("hoa quả","hoa kwa","fructe"), ". ",
+         p("Tôi","toi","eu"), _, vb("muốn","muon","vreau"), _, vb("mua","mua","să cumpăr"), _,
+         n("rau","rau","legume"), _, cj("và","va","și"), _, n("thịt","tit","carne"), ". ",
+         n("Siêu thị","sieu ti","Supermarketul"), _, vb("gần","gan","este aproape"), _, n("trường","truong","de școala"), _, p("của","kua","noastră"), "."] },
+    { ro:"În supermarket există multe fructe. Există mere, banane, portocale și pepene verde. Un kilogram de mere costă treizeci de mii de dong. Bananele sunt mai ieftine. Anna a luat două kilograme de banane și un pepene verde. Eu am luat mere și portocale.",
+      t:[p("Trong","trong","În"), _, n("siêu thị","sieu ti","supermarket"), _, vb("có","ko","există"), _,
+         a("nhiều","nhieu","multe"), _, n("hoa quả","hoa kwa","fructe"), ". ",
+         vb("Có","ko","Există"), _, n("quả táo","kwa tao","mere"), ", ", n("quả chuối","kwa chuoi","banane"), ", ",
+         n("quả cam","kwa kam","portocale"), _, cj("và","va","și"), _, n("quả dưa hấu","kwa dua hau","pepene verde"), ". ",
+         c("Một","mot","Un"), _, n("kilôgam","ki-lo-gam","kilogram"), _, n("táo","tao","de mere"), _,
+         vb("giá","zia","costă"), _, nu("ba mươi","ba muoi","treizeci"), _, n("nghìn","ngin","de mii"), _, n("đồng","dong","de dong"), ". ",
+         n("Chuối","chuoi","Bananele"), _, vb("rẻ","re","sunt mai ieftine"), _, a("hơn","hon","decât"), ". ",
+         nm("Anna","an-na","Anna"), _, vb("lấy","lay","a luat"), _, nu("hai","hai","două"), _,
+         n("kilôgam","ki-lo-gam","kilograme"), _, n("chuối","chuoi","de banane"), _, cj("và","va","și"), _,
+         c("một","mot","un"), _, n("quả dưa hấu","kwa dua hau","pepene verde"), ". ",
+         p("Tôi","toi","eu"), _, vb("lấy","lay","am luat"), _, n("táo","tao","mere"), _, cj("và","va","și"), _,
+         n("cam","kam","portocale"), "."] },
+    { ro:"Eu am găsit o rochie frumoasă în supermarket. Rochia este de culoare albastră. Dar rochia este scumpă — costă patru sute de mii de dong. Anna a găsit o poșetă ieftină. Poșeta este de culoare roșie și costă o sută cincizeci de mii de dong. Anna a cumpărat poșeta.",
+      t:[p("Tôi","toi","eu"), _, vb("tìm thấy","tim tay","am găsit"), _, c("một","mot","o"), _,
+         n("cái váy","kai vay","rochie"), _, a("đẹp","dep","frumoasă"), _, p("ở","o","în"), _,
+         n("siêu thị","sieu ti","supermarket"), ". ",
+         n("Cái váy","kai vay","Rochia"), _, vb("màu","mau","este de culoare"), _, a("xanh dương","san duong","albastră"), ". ",
+         cj("Nhưng","nhung","Dar"), _, n("cái váy","kai vay","rochia"), _, vb("rất","rat","este foarte"), _,
+         a("đắt","dat","scumpă"), "— ", vb("giá","zia","costă"), _,
+         nu("bốn trăm","bon tram","patru sute"), _, n("nghìn","ngin","de mii"), _, n("đồng","dong","de dong"), ". ",
+         nm("Anna","an-na","Anna"), _, vb("tìm thấy","tim tay","a găsit"), _, c("một","mot","o"), _,
+         n("cái túi","kai tui","poșetă"), _, a("rẻ","re","ieftină"), ". ",
+         n("Cái túi","kai tui","Poșeta"), _, vb("màu","mau","este de culoare"), _, a("đỏ","do","roșie"), _,
+         cj("và","va","și"), _, vb("giá","zia","costă"), _,
+         nu("một trăm rưỡi","mot tram ruoi","o sută cincizeci"), _, n("nghìn","ngin","de mii"), _, n("đồng","dong","de dong"), ". ",
+         nm("Anna","an-na","Anna"), _, vb("mua","mua","a cumpărat"), _, n("cái túi","kai tui","poșeta"), "."] },
+    { ro:"După ce am cumpărat tot, am mers la cafeneaua din supermarket. Am băut cà phê cu lapte cu gheață. Am vorbit despre ce am cumpărat. Anna a spus că supermarketul are prețuri bune. Eu am spus că prefer piața tradițională pentru legume. Piața este mai ieftină decât supermarketul.",
+      t:[a("Sau khi","sau khi","După ce"), _, vb("mua","mua","am cumpărat"), _, a("xong","song","tot"), ", ",
+         p("chúng tôi","chung toi","noi"), _, vb("đến","den","am mers la"), _,
+         n("quán cà phê","kwan ka fe","cafeneaua"), _, p("trong","trong","din"), _, n("siêu thị","sieu ti","supermarket"), ". ",
+         p("Chúng tôi","chung toi","Noi"), _, vb("uống","uong","am băut"), _, n("cà phê sữa đá","ka fe sua da","cà phê cu lapte cu gheață"), ". ",
+         p("Chúng tôi","chung toi","Noi"), _, vb("nói chuyện","noi chuyen","am vorbit"), _,
+         p("về","ve","despre"), _, n("đồ","do","ce"), _, vb("đã mua","da mua","am cumpărat"), ". ",
+         nm("Anna","an-na","Anna"), _, vb("nói","noi","a spus"), _, a("rằng","rang","că"), _,
+         n("siêu thị","sieu ti","supermarketul"), _, vb("có","ko","are"), _, n("giá","zia","prețuri"), _, a("tốt","tot","bune"), ". ",
+         p("Tôi","toi","eu"), _, vb("nói","noi","am spus"), _, p("tôi","toi","eu"), _,
+         vb("thích","tik","prefer"), _, n("chợ","cho","piața"), _, a("truyền thống","truyen tong","tradițională"), _,
+         p("hơn","hon","mai mult decât"), _, n("siêu thị","sieu ti","supermarketul"), _, p("vì","vi","pentru"), _,
+         n("rau","rau","legumele"), ". ",
+         n("Chợ","cho","Piața"), _, a("rẻ","re","este mai ieftină"), _, a("hơn","hon","decât"), _,
+         n("siêu thị","sieu ti","supermarketul"), "."] }
+  ]
+},
+{
+  num:"Chương Mười Hai", viet:"Các mùa ở Việt Nam", sub:"Anotimpurile în Vietnam",
+  paras:[
+    { ro:"Vietnamul are două sezoane principale: sezonul ploios și sezonul uscat. În nord, ca Hanoiul, există patru anotimpuri: primăvară, vară, toamnă și iarnă. Vara este fierbinte și umedă. Iarna este rece și uscată. Doamna Lan mi-a spus că fiecare anotimp este frumos în felul lui.",
+      t:[nm("Việt Nam","viet nam","Vietnamul"), _, vb("có","ko","are"), _, nu("hai","hai","două"), _,
+         n("mùa","mua","sezoane"), _, a("chính","kin","principale"), ": ",
+         n("mùa mưa","mua mua","sezonul ploios"), _, cj("và","va","și"), _, n("mùa khô","mua kho","sezonul uscat"), ". ",
+         p("Ở","o","În"), _, n("miền Bắc","mien bak","nord"), ", ", a("như","nhu","ca"), _,
+         nm("Hà Nội","ha noi","Hanoiul"), ", ", vb("có","ko","există"), _, nu("bốn","bon","patru"), _,
+         n("mùa","mua","anotimpuri"), ": ",
+         n("mùa xuân","mua suan","primăvară"), ", ", n("mùa hè","mua he","vară"), ", ",
+         n("mùa thu","mua thu","toamnă"), _, cj("và","va","și"), _, n("mùa đông","mua dong","iarnă"), ". ",
+         n("Mùa hè","mua he","Vara"), _, vb("rất","rat","este foarte"), _, a("nóng","nong","fierbinte"), _,
+         cj("và","va","și"), _, a("ẩm","am","umedă"), ". ",
+         n("Mùa đông","mua dong","Iarna"), _, vb("rất","rat","este foarte"), _, a("lạnh","lan","rece"), _,
+         cj("và","va","și"), _, a("khô","kho","uscată"), ". ",
+         n("Cô","ko","Doamna"), _, nm("Lan","lan","Lan"), _, vb("nói","noi","mi-a spus"), _, p("với","voi","că"), _,
+         p("tôi","toi","mie"), _, a("rằng","rang","că"), _, a("mỗi","moi","fiecare"), _,
+         n("mùa","mua","anotimp"), _, vb("đều","deu","este"), _, a("đẹp","dep","frumos"), _,
+         p("theo","theo","în"), _, n("cách","kak","felul"), _, n("riêng","rieng","lui"), "."] },
+    { ro:"Acum este primăvară în Hanoi. Primăvara este anotimpul meu preferat. Florile înfloresc pe străzi. Aerul este proaspăt și răcoros. Oamenii ies la plimbare în parc. Eu și Anna mergem la parcul Hoàn Kiếm în fiecare duminică primăvara.",
+      t:[n("Bây giờ","bay gio","Acum"), _, vb("là","la","este"), _, n("mùa xuân","mua suan","primăvară"), _,
+         p("ở","o","în"), _, nm("Hà Nội","ha noi","Hanoi"), ". ",
+         n("Mùa xuân","mua suan","Primăvara"), _, vb("là","la","este"), _, n("mùa","mua","anotimpul"), _,
+         a("yêu thích","yeu tik","preferat"), _, p("của","kua","al meu"), _, p("tôi","toi","meu"), ". ",
+         n("Hoa","hoa","Florile"), _, vb("nở","no","înfloresc"), _, p("trên","tren","pe"), _,
+         n("đường phố","duong fo","străzi"), ". ",
+         n("Không khí","khong khi","Aerul"), _, vb("rất","rat","este foarte"), _,
+         a("trong lành","trong lan","proaspăt"), _, cj("và","va","și"), _, a("mát mẻ","mat me","răcoros"), ". ",
+         n("Người","nguoi","Oamenii"), _, vb("ra ngoài","ra ngoai","ies"), _, vb("đi bộ","di bo","la plimbare"), _,
+         p("trong","trong","în"), _, n("công viên","kong vien","parc"), ". ",
+         p("Tôi","toi","eu"), _, cj("và","va","și"), _, nm("Anna","an-na","Anna"), _,
+         vb("đi","di","mergem la"), _, n("công viên","kong vien","parcul"), _, nm("Hoàn Kiếm","hwan kiem","Hoàn Kiếm"), _,
+         a("mỗi","moi","în fiecare"), _, n("chủ nhật","chu nhat","duminică"), _, n("mùa xuân","mua suan","primăvara"), "."] },
+    { ro:"Vara în Ho Chi Minh City este foarte fierbinte. Temperatura ajunge la patruzeci de grade. Oamenii beau multă apă. Ei poartă haine subțiri. Sezonul ploios începe în mai și se termină în octombrie. Ploaia vine în fiecare după-amiază.",
+      t:[n("Mùa hè","mua he","Vara"), _, p("ở","o","în"), _,
+         nm("Thành phố Hồ Chí Minh","tan fo ho chi min","Ho Chi Minh City"), _,
+         a("rất","rat","este foarte"), _, a("nóng","nong","fierbinte"), ". ",
+         n("Nhiệt độ","nhiet do","Temperatura"), _, vb("lên đến","len den","ajunge la"), _,
+         nu("bốn mươi","bon muoi","patruzeci"), _, n("độ","do","de grade"), ". ",
+         n("Người","nguoi","Oamenii"), _, vb("uống","uong","beau"), _, a("nhiều","nhieu","multă"), _, n("nước","nuok","apă"), ". ",
+         p("Họ","ho","Ei"), _, vb("mặc","mak","poartă"), _, n("quần áo","kwan ao","haine"), _, a("mỏng","mong","subțiri"), ". ",
+         n("Mùa mưa","mua mua","Sezonul ploios"), _, vb("bắt đầu","bat dau","începe"), _,
+         p("vào","vao","în"), _, n("tháng năm","tang nam","mai"), _, cj("và","va","și"), _,
+         vb("kết thúc","ket tuk","se termină"), _, p("vào","vao","în"), _, n("tháng mười","tang muoi","octombrie"), ". ",
+         n("Mưa","mua","Ploaia"), _, vb("đến","den","vine"), _, a("mỗi","moi","în fiecare"), _,
+         n("buổi chiều","buoi chieu","după-amiază"), "."] },
+    { ro:"Toamna în Hanoi este foarte frumoasă. Frunzele devin galbene și portocalii. Aerul este răcoros și plăcut. Oamenii din Hanoi iubesc toamna. Iarna în Hanoi este rece, dar nu cade zăpadă. Oamenii poartă haine groase iarna. Eu prefer primăvara și toamna.",
+      t:[n("Mùa thu","mua thu","Toamna"), _, p("ở","o","în"), _, nm("Hà Nội","ha noi","Hanoi"), _,
+         a("rất","rat","este foarte"), _, a("đẹp","dep","frumoasă"), ". ",
+         n("Lá cây","la kay","Frunzele"), _, vb("chuyển","chuyen","devin"), _,
+         a("vàng","vang","galbene"), _, cj("và","va","și"), _, a("cam","kam","portocalii"), ". ",
+         n("Không khí","khong khi","Aerul"), _, vb("rất","rat","este foarte"), _,
+         a("mát","mat","răcoros"), _, cj("và","va","și"), _, a("dễ chịu","ze chiu","plăcut"), ". ",
+         n("Người","nguoi","Oamenii"), _, nm("Hà Nội","ha noi","din Hanoi"), _,
+         vb("yêu","yeu","iubesc"), _, n("mùa thu","mua thu","toamna"), ". ",
+         n("Mùa đông","mua dong","Iarna"), _, p("ở","o","în"), _, nm("Hà Nội","ha noi","Hanoi"), _,
+         a("lạnh","lan","este rece"), ", ", cj("nhưng","nhung","dar"), _,
+         a("không","khong","nu"), _, vb("có","ko","cade"), _, n("tuyết","tuyet","zăpadă"), ". ",
+         n("Người","nguoi","Oamenii"), _, vb("mặc","mak","poartă"), _,
+         n("áo","ao","haine"), _, a("dày","day","groase"), _, n("mùa đông","mua dong","iarna"), ". ",
+         p("Tôi","toi","eu"), _, vb("thích","tik","prefer"), _,
+         n("mùa xuân","mua suan","primăvara"), _, cj("và","va","și"), _, n("mùa thu","mua thu","toamna"), "."] }
+  ]
+},
+{
+  num:"Chương Mười Ba", viet:"Con vật ở Hà Nội", sub:"Animale în Hanoi",
+  paras:[
+    { ro:"Doamna Hương, proprietara mea, are mai multe animale. Ea are o pisică numită Mimi și un câine numit Mực. Pisica Mimi este albă și moale. Câinele Mực este negru și prietenos. Îmi plac foarte mult Mimi și Mực.",
+      t:[n("Bà","ba","Doamna"), _, nm("Hương","huong","Hương"), ", ",
+         n("chủ nhà","chu nya","proprietara mea"), ", ", vb("có","ko","are"), _,
+         a("một vài","mot vai","mai multe"), _, n("con vật","kon vat","animale"), ". ",
+         n("Bà","ba","Ea"), _, vb("có","ko","are"), _, c("một","mot","o"), _,
+         n("con mèo","kon meo","pisică"), _, vb("tên là","ten la","numită"), _, nm("Mimi","mi-mi","Mimi"), _,
+         cj("và","va","și"), _, c("một","mot","un"), _, n("con chó","kon cho","câine"), _,
+         vb("tên là","ten la","numit"), _, nm("Mực","muk","Mực"), ". ",
+         n("Con mèo","kon meo","Pisica"), _, nm("Mimi","mi-mi","Mimi"), _, vb("màu","mau","este de culoare"), _,
+         a("trắng","trang","albă"), _, cj("và","va","și"), _, a("mềm","mem","moale"), ". ",
+         n("Con chó","kon cho","Câinele"), _, nm("Mực","muk","Mực"), _, vb("màu","mau","este de culoare"), _,
+         a("đen","den","negru"), _, cj("và","va","și"), _, a("thân thiện","tan tien","prietenos"), ". ",
+         p("Tôi","toi","eu"), _, a("rất","rat","foarte"), _, vb("thích","tik","îmi plac"), _,
+         nm("Mimi","mi-mi","Mimi"), _, cj("và","va","și"), _, nm("Mực","muk","Mực"), "."] },
+    { ro:"În fiecare dimineață, Mimi vine la mine în cameră. Ea stă pe patul meu și toarce. Câinele Mực aleargă în grădina casei. Bà Hương hrănește pisica și câinele în fiecare zi. Mimi mănâncă pește. Mực mănâncă orez cu carne.",
+      t:[a("Mỗi","moi","În fiecare"), _, n("buổi sáng","buoi sang","dimineață"), ", ",
+         n("con mèo","kon meo","pisica"), _, nm("Mimi","mi-mi","Mimi"), _,
+         vb("đến","den","vine la"), _, n("phòng","fong","camera"), _, p("của","kua","mea"), _, p("tôi","toi","mea"), ". ",
+         n("Cô ấy","ko ay","Ea"), _, vb("nằm","nam","stă pe"), _, n("giường","giuong","patul"), _, p("của","kua","meu"), _,
+         p("tôi","toi","meu"), _, cj("và","va","și"), _, vb("kêu gừ gừ","keu gu gu","toarce"), ". ",
+         n("Con chó","kon cho","Câinele"), _, nm("Mực","muk","Mực"), _,
+         vb("chạy","chay","aleargă"), _, p("trong","trong","în"), _,
+         n("vườn","vuon","grădina"), _, n("nhà","nya","casei"), ". ",
+         n("Bà","ba","Doamna"), _, nm("Hương","huong","Hương"), _,
+         vb("cho","cho","hrănește"), _, n("con mèo","kon meo","pisica"), _, cj("và","va","și"), _,
+         n("con chó","kon cho","câinele"), _, vb("ăn","an","să mănânce"), _, a("mỗi","moi","în fiecare"), _, n("ngày","ngay","zi"), ". ",
+         n("Con mèo","kon meo","Pisica"), _, vb("ăn","an","mănâncă"), _, n("cá","ka","pește"), ". ",
+         n("Con chó","kon cho","Câinele"), _, vb("ăn","an","mănâncă"), _, n("cơm","kom","orez"), _, p("với","voi","cu"), _, n("thịt","tit","carne"), "."] },
+    { ro:"Duminica, eu și Tommy (fratele meu) am mers la grădina zoologică din Hanoi. Acolo am văzut elefanți, girafă, tigri și maimuțe. Mi-a plăcut cel mai mult elefantul. Elefantul este cel mai mare animal din grădina zoologică. Tommy a fotografiat toate animalele.",
+      t:[n("Chủ nhật","chu nhat","Duminica"), ", ",
+         p("tôi","toi","eu"), _, cj("và","va","și"), _, nm("Tommy","to-mi","Tommy"), _,
+         vb("đi","di","am mers la"), _, n("vườn thú","vuon tu","grădina zoologică"), _,
+         p("ở","o","din"), _, nm("Hà Nội","ha noi","Hanoi"), ". ",
+         a("Ở đó","o do","Acolo"), _, p("chúng tôi","chung toi","noi"), _, vb("thấy","tay","am văzut"), _,
+         n("con voi","kon voi","elefanți"), ", ", n("con hươu cao cổ","kon hieu kao ko","girafă"), ", ",
+         n("con hổ","kon ho","tigri"), _, cj("và","va","și"), _, n("con khỉ","kon khi","maimuțe"), ". ",
+         p("Tôi","toi","eu"), _, vb("thích nhất","tik nhat","mi-a plăcut cel mai mult"), _,
+         n("con voi","kon voi","elefantul"), ". ",
+         n("Con voi","kon voi","Elefantul"), _, vb("là","la","este"), _,
+         n("con vật","kon vat","animalul"), _, a("lớn nhất","lon nhat","cel mai mare"), _,
+         p("trong","trong","din"), _, n("vườn thú","vuon tu","grădina zoologică"), ". ",
+         nm("Tommy","to-mi","Tommy"), _, vb("chụp ảnh","chup an","a fotografiat"), _,
+         a("tất cả","tat ka","toate"), _, n("con vật","kon vat","animalele"), "."] },
+    { ro:"Lângă casa doamnei Hương există o grădină. În grădină există găini și rațe. Bà Hương crește găini pentru ouă. Găinile aleargă libere în grădină în fiecare zi. Rațele merg la heleșteul mic din curte. Îmi place să privesc găinile și rațele dimineața.",
+      t:[a("Gần","gan","Lângă"), _, n("nhà","nya","casa"), _, n("bà","ba","doamnei"), _,
+         nm("Hương","huong","Hương"), _, vb("có","ko","există"), _, c("một","mot","o"), _,
+         n("khu vườn","khu vuon","grădină"), ". ",
+         p("Trong","trong","În"), _, n("vườn","vuon","grădină"), _, vb("có","ko","există"), _,
+         n("con gà","kon ga","găini"), _, cj("và","va","și"), _, n("con vịt","kon vit","rațe"), ". ",
+         n("Bà","ba","Doamna"), _, nm("Hương","huong","Hương"), _, vb("nuôi","nuoi","crește"), _,
+         n("con gà","kon ga","găini"), _, p("để","de","pentru"), _, n("trứng","trung","ouă"), ". ",
+         n("Những con gà","nhung kon ga","Găinile"), _, vb("chạy","chay","aleargă"), _,
+         a("tự do","tu do","libere"), _, p("trong","trong","în"), _, n("vườn","vuon","grădină"), _,
+         a("mỗi","moi","în fiecare"), _, n("ngày","ngay","zi"), ". ",
+         n("Những con vịt","nhung kon vit","Rațele"), _, vb("đi","di","merg la"), _,
+         n("ao nhỏ","ao nyo","heleșteul mic"), _, p("trong","trong","din"), _, n("sân","san","curte"), ". ",
+         p("Tôi","toi","eu"), _, vb("thích","tik","îmi place"), _, vb("xem","sem","să privesc"), _,
+         n("con gà","kon ga","găinile"), _, cj("và","va","și"), _, n("con vịt","kon vit","rațele"), _,
+         n("buổi sáng","buoi sang","dimineața"), "."] }
+  ]
+},
+{
+  num:"Chương Mười Bốn", viet:"Ẩm thực Hà Nội", sub:"Gastronomia Hanoiului",
+  paras:[
+    { ro:"Hanoiul are foarte multe mâncăruri delicioase. Cel mai faimos este phở. Există phở cu vită și phở cu pui. Există și bún bò Huế, care vine din Huế. Cơm tấm este o mâncare populară în Ho Chi Minh City. Eu am mâncat toate aceste mâncăruri și mi-au plăcut toate.",
+      t:[nm("Hà Nội","ha noi","Hanoiul"), _, vb("có","ko","are"), _, a("rất","rat","foarte"), _,
+         a("nhiều","nhieu","multe"), _, n("món ăn","mon an","mâncăruri"), _, a("ngon","ngon","delicioase"), ". ",
+         n("Nổi tiếng nhất","noi tieng nhat","Cel mai faimos"), _, vb("là","la","este"), _, n("phở","fo","phở"), ". ",
+         vb("Có","ko","Există"), _, n("phở bò","fo bo","phở cu vită"), _, cj("và","va","și"), _,
+         n("phở gà","fo ga","phở cu pui"), ". ",
+         vb("Cũng","kung","Și"), _, vb("có","ko","există"), _, n("bún bò Huế","bun bo hue","bún bò Huế"), ", ",
+         vb("đến từ","den tu","care vine din"), _, nm("Huế","hue","Huế"), ". ",
+         n("Cơm tấm","kom tam","Cơm tấm"), _, vb("là","la","este"), _, c("một","mot","o"), _,
+         n("món ăn","mon an","mâncare"), _, a("phổ biến","fo bien","populară"), _,
+         p("ở","o","în"), _, nm("Thành phố Hồ Chí Minh","tan fo ho chi min","Ho Chi Minh City"), ". ",
+         p("Tôi","toi","eu"), _, vb("đã ăn","da an","am mâncat"), _, a("tất cả","tat ka","toate"), _,
+         n("những món","nhung mon","aceste mâncăruri"), _, a("này","nay","acestea"), _,
+         cj("và","va","și"), _, a("đều","deu","toate"), _, vb("thích","tik","mi-au plăcut"), "."] },
+    { ro:"Ieri, eu, Carlos și Anna am mers la un restaurant de fructe de mare lângă Lacul Tây. Restaurantul a avut creveți, crabi, scoici și pești. Fructele de mare au fost foarte proaspete și delicioase. Carlos a comandat creveți la grătar. Eu am comandat supă de pești. Anna a comandat crabi fierți. Am mâncat împreună și am plătit împreună.",
+      t:[n("Hôm qua","hom kwa","Ieri"), ", ",
+         p("tôi","toi","eu"), ", ", nm("Carlos","kar-los","Carlos"), _, cj("và","va","și"), _,
+         nm("Anna","an-na","Anna"), _, vb("đi","di","am mers la"), _, c("một","mot","un"), _,
+         n("nhà hàng","nya hang","restaurant"), _, n("hải sản","hai san","de fructe de mare"), _,
+         a("gần","gan","lângă"), _, n("Hồ Tây","ho tay","Lacul Tây"), ". ",
+         n("Nhà hàng","nya hang","Restaurantul"), _, vb("có","ko","a avut"), _,
+         n("tôm","tom","creveți"), ", ", n("cua","kua","crabi"), ", ", n("sò","so","scoici"), _,
+         cj("và","va","și"), _, n("cá","ka","pești"), ". ",
+         n("Hải sản","hai san","Fructele de mare"), _, vb("rất","rat","au fost foarte"), _,
+         a("tươi","tuoi","proaspete"), _, cj("và","va","și"), _, a("ngon","ngon","delicioase"), ". ",
+         nm("Carlos","kar-los","Carlos"), _, vb("gọi","zoi","a comandat"), _,
+         n("tôm","tom","creveți"), _, a("nướng","nuong","la grătar"), ". ",
+         p("Tôi","toi","eu"), _, vb("gọi","zoi","am comandat"), _,
+         n("canh cá","kan ka","supă de pești"), ". ",
+         nm("Anna","an-na","Anna"), _, vb("gọi","zoi","a comandat"), _,
+         n("cua","kua","crabi"), _, a("luộc","luok","fierți"), ". ",
+         p("Chúng tôi","chung toi","Noi"), _, vb("ăn","an","am mâncat"), _, a("cùng nhau","kung nhau","împreună"), _,
+         cj("và","va","și"), _, vb("trả tiền","tra tien","am plătit"), _, a("cùng nhau","kung nhau","împreună"), "."] },
+    { ro:"Dimineața, băutoarea favorită a hanoienilor este cà phê. Hanoienii beau cà phê negru sau cà phê cu ou. Cà phê cu ou este o specialitate a Hanoiului. Eu am băut cà phê cu ou pentru prima dată luna trecută. A fost delicios. Acum beau cà phê cu ou în fiecare dimineață.",
+      t:[n("Buổi sáng","buoi sang","Dimineața"), ", ",
+         n("đồ uống","do uong","băutoarea"), _, a("yêu thích","yeu tik","favorită"), _,
+         p("của","kua","a"), _, n("người Hà Nội","nguoi ha noi","hanoienilor"), _,
+         vb("là","la","este"), _, n("cà phê","ka fe","cà phê"), ". ",
+         n("Người Hà Nội","nguoi ha noi","Hanoienii"), _, vb("uống","uong","beau"), _,
+         n("cà phê đen","ka fe den","cà phê negru"), _, a("hoặc","hoat","sau"), _,
+         n("cà phê trứng","ka fe trung","cà phê cu ou"), ". ",
+         n("Cà phê trứng","ka fe trung","Cà phê cu ou"), _, vb("là","la","este"), _,
+         c("một","mot","o"), _, n("đặc sản","dak san","specialitate"), _,
+         p("của","kua","a"), _, nm("Hà Nội","ha noi","Hanoiului"), ". ",
+         p("Tôi","toi","eu"), _, vb("đã uống","da uong","am băut"), _,
+         n("cà phê trứng","ka fe trung","cà phê cu ou"), _, n("lần đầu tiên","lan dau tien","pentru prima dată"), _,
+         n("tháng trước","tang truok","luna trecută"), ". ",
+         vb("Nó","no","A fost"), _, a("rất","rat","foarte"), _, a("ngon","ngon","delicios"), ". ",
+         n("Bây giờ","bay gio","Acum"), _, p("tôi","toi","eu"), _, vb("uống","uong","beau"), _,
+         n("cà phê trứng","ka fe trung","cà phê cu ou"), _, a("mỗi","moi","în fiecare"), _,
+         n("buổi sáng","buoi sang","dimineață"), "."] },
+    { ro:"Seara, piața de noapte din Hanoi are multe mâncăruri de stradă. Există bánh mì, chả giò, bánh xèo și multe altele. Prețurile sunt foarte ieftine. Studenții merg adesea la piața de noapte. Eu și prietenii mei mergem la piața de noapte în fiecare vineri seara. Ne place foarte mult.",
+      t:[n("Buổi tối","buoi toi","Seara"), ", ",
+         n("chợ đêm","cho dem","piața de noapte"), _, p("ở","o","din"), _, nm("Hà Nội","ha noi","Hanoi"), _,
+         vb("có","ko","are"), _, a("nhiều","nhieu","multe"), _, n("đồ ăn đường phố","do an duong fo","mâncăruri de stradă"), ". ",
+         vb("Có","ko","Există"), _, n("bánh mì","ban mi","bánh mì"), ", ", n("chả giò","cha zio","chả giò"), ", ",
+         n("bánh xèo","ban seo","bánh xèo"), _, cj("và","va","și"), _, a("nhiều","nhieu","multe"), _, n("món khác","mon khak","altele"), ". ",
+         n("Giá","zia","Prețurile"), _, vb("rất","rat","sunt foarte"), _, a("rẻ","re","ieftine"), ". ",
+         n("Sinh viên","sin vien","Studenții"), _, a("thường","tuong","merg adesea"), _,
+         vb("đến","den","la"), _, n("chợ đêm","cho dem","piața de noapte"), ". ",
+         p("Tôi","toi","eu"), _, cj("và","va","și"), _, n("bạn bè","ban be","prietenii"), _, p("của","kua","mei"), _, p("tôi","toi","mei"), _,
+         vb("đi","di","mergem la"), _, n("chợ đêm","cho dem","piața de noapte"), _,
+         a("mỗi","moi","în fiecare"), _, n("tối thứ Sáu","toi tu sau","vineri seara"), ". ",
+         p("Chúng tôi","chung toi","Noi"), _, a("rất","rat","foarte"), _, vb("thích","tik","ne place"), "."] }
+  ]
+},
+{
+  num:"Chương Mười Lăm", viet:"Hà Nội, thành phố của tôi", sub:"Hanoi, orașul meu",
+  paras:[
+    { ro:"Hanoiul este un oraș mare și dinamic. Există multe bănci, companii și magazine. Dimineața, oamenii merg la muncă cu mașinile, motocicletele și bicicletele. Străzile sunt pline de oameni și vehicule. Hanoiul este mereu animat și vibrant.",
+      t:[nm("Hà Nội","ha noi","Hanoiul"), _, vb("là","la","este"), _, c("một","mot","un"), _,
+         n("thành phố","tan fo","oraș"), _, a("lớn","lon","mare"), _, cj("và","va","și"), _,
+         a("năng động","nang dong","dinamic"), ". ",
+         vb("Có","ko","Există"), _, a("nhiều","nhieu","multe"), _,
+         n("ngân hàng","ngan hang","bănci"), ", ", n("công ty","kong ti","companii"), _,
+         cj("và","va","și"), _, n("cửa hàng","kua hang","magazine"), ". ",
+         n("Buổi sáng","buoi sang","Dimineața"), ", ",
+         n("người","nguoi","oamenii"), _, vb("đi làm","di lam","merg la muncă"), _,
+         p("bằng","bang","cu"), _, n("ô tô","o to","mașinile"), ", ", n("xe máy","se may","motocicletele"), _,
+         cj("và","va","și"), _, n("xe đạp","se dap","bicicletele"), ". ",
+         n("Đường phố","duong fo","Străzile"), _, a("đầy","day","pline"), _,
+         p("của","kua","de"), _, n("người","nguoi","oameni"), _, cj("và","va","și"), _,
+         n("phương tiện","fuong tien","vehicule"), ". ",
+         nm("Hà Nội","ha noi","Hanoiul"), _, a("luôn","luon","mereu"), _,
+         a("náo nhiệt","nao nhiet","animat"), _, cj("và","va","și"), _,
+         a("năng động","nang dong","vibrant"), "."] },
+    { ro:"Fratele Nam lucrează la spital cu mașina lui. El are o mașină albă. În fiecare dimineață, el pleacă de acasă la ora șapte. Doamna Lan merge la școală cu motocicleta. Eu merg la școală pe jos sau cu autobuzul. Autobuzul este ieftin și rapid.",
+      t:[n("Anh","an","Fratele"), _, nm("Nam","nam","Nam"), _, vb("đi làm","di lam","lucrează"), _,
+         p("bằng","bang","cu"), _, n("ô tô","o to","mașina"), _, p("của","kua","lui"), _, n("anh ấy","an ay","lui"), ". ",
+         n("Anh ấy","an ay","El"), _, vb("có","ko","are"), _, c("một","mot","o"), _,
+         n("cái ô tô","kai o to","mașină"), _, a("màu trắng","mau trang","albă"), ". ",
+         a("Mỗi","moi","În fiecare"), _, n("buổi sáng","buoi sang","dimineață"), ", ",
+         n("anh ấy","an ay","el"), _, vb("rời nhà","roi nya","pleacă de acasă"), _,
+         a("lúc","luk","la ora"), _, nu("bảy","bay","șapte"), _, n("giờ","ziou","ora"), ". ",
+         n("Cô","ko","Doamna"), _, nm("Lan","lan","Lan"), _, vb("đi làm","di lam","merge la școală"), _,
+         p("bằng","bang","cu"), _, n("xe máy","se may","motocicleta"), ". ",
+         p("Tôi","toi","eu"), _, vb("đi học","di hok","merg la școală"), _, vb("bộ","bo","pe jos"), _,
+         a("hoặc","hoat","sau"), _, p("bằng","bang","cu"), _, n("xe buýt","se buit","autobuzul"), ". ",
+         n("Xe buýt","se buit","Autobuzul"), _, vb("rất","rat","este foarte"), _,
+         a("rẻ","re","ieftin"), _, cj("và","va","și"), _, a("nhanh","nhan","rapid"), "."] },
+    { ro:"La Hanoi există mulți angajați de birou. Ei lucrează la companii mari. Ei folosesc computere și telefoane în fiecare zi. Unii angajați lucrează la bănci. Băncile din Hanoi sunt deschise de luni până vineri. Fratele lui Minh este angajat de birou la o bancă mare din Hanoi.",
+      t:[p("Ở","o","La"), _, nm("Hà Nội","ha noi","Hanoi"), _, vb("có","ko","există"), _,
+         a("nhiều","nhieu","mulți"), _, n("nhân viên văn phòng","nhan vien van fong","angajați de birou"), ". ",
+         p("Họ","ho","Ei"), _, vb("làm việc","lam viek","lucrează la"), _,
+         n("công ty","kong ti","companii"), _, a("lớn","lon","mari"), ". ",
+         p("Họ","ho","Ei"), _, vb("dùng","zung","folosesc"), _,
+         n("máy tính","may tinh","computere"), _, cj("và","va","și"), _,
+         n("điện thoại","dien thoai","telefoane"), _, a("mỗi","moi","în fiecare"), _, n("ngày","ngay","zi"), ". ",
+         c("Một số","mot so","Unii"), _, n("nhân viên","nhan vien","angajați"), _,
+         vb("làm việc","lam viek","lucrează la"), _, n("ngân hàng","ngan hang","bănci"), ". ",
+         n("Các ngân hàng","kak ngan hang","Băncile"), _, p("ở","o","din"), _,
+         nm("Hà Nội","ha noi","Hanoi"), _, vb("mở cửa","mo kua","sunt deschise"), _,
+         p("từ","tu","de"), _, n("thứ Hai","tu hai","luni"), _, p("đến","den","până"), _,
+         n("thứ Sáu","tu sau","vineri"), ". ",
+         n("Anh trai","an trai","Fratele"), _, p("của","kua","lui"), _, nm("Minh","min","Minh"), _,
+         vb("là","la","este"), _, n("nhân viên văn phòng","nhan vien van fong","angajat de birou"), _,
+         p("ở","o","la"), _, c("một","mot","o"), _, n("ngân hàng","ngan hang","bancă"), _,
+         a("lớn","lon","mare"), _, p("ở","o","din"), _, nm("Hà Nội","ha noi","Hanoi"), "."] },
+    { ro:"Au trecut patru luni de când am venit în Hanoi. Acum vorbesc vietnameza mai bine. Pot întreba drumul, pot cumpăra la piață, pot comanda mâncarea. Hanoiul a devenit orașul meu. Oamenii din Hanoi sunt ca o familie pentru mine. Vreau să rămân în Hanoi mult timp.",
+      t:[vb("Đã","da","Au trecut"), _, nu("bốn","bon","patru"), _, n("tháng","tang","luni"), _,
+         p("kể từ khi","ke tu khi","de când"), _, p("tôi","toi","eu"), _,
+         vb("đến","den","am venit la"), _, nm("Hà Nội","ha noi","Hanoi"), ". ",
+         n("Bây giờ","bay gio","Acum"), _, p("tôi","toi","eu"), _,
+         vb("nói","noi","vorbesc"), _, n("tiếng Việt","tieng viet","vietnameza"), _,
+         a("tốt hơn","tot hon","mai bine"), ". ",
+         p("Tôi","toi","eu"), _, vb("có thể","ko the","pot"), _,
+         vb("hỏi đường","hoi duong","întreba drumul"), ", ",
+         vb("có thể","ko the","pot"), _, vb("mua","mua","cumpăra"), _,
+         p("ở","o","la"), _, n("chợ","cho","piață"), ", ",
+         vb("có thể","ko the","pot"), _, vb("gọi món","zoi mon","comanda mâncarea"), ". ",
+         nm("Hà Nội","ha noi","Hanoiul"), _, vb("đã trở thành","da tro tan","a devenit"), _,
+         n("thành phố","tan fo","orașul"), _, p("của","kua","meu"), _, p("tôi","toi","meu"), ". ",
+         n("Người","nguoi","Oamenii"), _, p("ở","o","din"), _, nm("Hà Nội","ha noi","Hanoi"), _,
+         vb("là","la","sunt ca"), _, c("một","mot","o"), _, n("gia đình","zia din","familie"), _,
+         p("với","voi","pentru"), _, p("tôi","toi","mine"), ". ",
+         p("Tôi","toi","eu"), _, vb("muốn","muon","vreau"), _,
+         vb("ở lại","o lai","să rămân la"), _, nm("Hà Nội","ha noi","Hanoi"), _,
+         a("lâu","lau","mult timp"), "."] }
+  ]
+}
+]; /* end chapters */
+
+const tm = {
+  n:{label:"substantiv",clr:"var(--cn)"},
+  v:{label:"verb",clr:"var(--cv)"},
+  p:{label:"particulă/pronume",clr:"var(--cp)"},
+  a:{label:"adjectiv/adverb",clr:"var(--ca)"},
+  nm:{label:"nume propriu",clr:"var(--cnm)"},
+  nu:{label:"număr",clr:"var(--cnu)"},
+  c:{label:"clasificator",clr:"var(--cc)"},
+  cj:{label:"conjuncție",clr:"var(--ccj)"},
+};
+
+const DONE_KEY = "hno_done_v2";
+let done = new Set(JSON.parse(localStorage.getItem(DONE_KEY)||"[]"));
+let cur = 0, showAll = false, colorize = false;
+const ROM = ["I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV"];
+
+/* ── progress ── */
+const spFill  = document.getElementById("sp-fill");
+const spLabel = document.getElementById("sp-label");
+function updateProgress(){
+  const pct = (done.size/chapters.length)*100;
+  spFill.style.width = pct+"%";
+  spLabel.textContent = done.size+" / "+chapters.length;
+}
+updateProgress();
+
+/* ── build nav lists ── */
+const chList  = document.getElementById("ch-list");
+const mobTabs = document.getElementById("mob-tabs");
+chapters.forEach((ch,i)=>{
+  const btn = document.createElement("button");
+  btn.className = "ch-btn"+(done.has(i)?" done":"");
+  btn.innerHTML = `<span class="cb-num">${ROM[i]}</span><span class="cb-texts"><span class="cb-title">${ch.viet}</span><span class="cb-sub">${ch.sub}</span></span>`;
+  btn.addEventListener("click",()=>loadCh(i));
+  chList.appendChild(btn);
+
+  const tab = document.createElement("button");
+  tab.className = "mob-tab"+(done.has(i)?" done":"");
+  tab.textContent = ROM[i]+". "+ch.viet;
+  tab.addEventListener("click",()=>loadCh(i));
+  mobTabs.appendChild(tab);
+});
+
+function setActive(i){
+  document.querySelectorAll(".ch-btn").forEach((b,j)=>b.classList.toggle("active",j===i));
+  document.querySelectorAll(".mob-tab").forEach((b,j)=>b.classList.toggle("active",j===i));
+}
+
+/* ── mobile bottom nav ── */
+const mbnPrev = document.getElementById("mbn-prev");
+const mbnNext = document.getElementById("mbn-next");
+mbnPrev.addEventListener("click",()=>{ if(cur>0) loadCh(cur-1); });
+mbnNext.addEventListener("click",()=>{ if(cur<chapters.length-1){ markDone(cur); loadCh(cur+1); } });
+function updateMobNav(){
+  document.getElementById("mbn-num").textContent   = ROM[cur];
+  document.getElementById("mbn-title").textContent = chapters[cur].viet;
+  mbnPrev.disabled = cur===0;
+  mbnNext.disabled = cur===chapters.length-1;
+}
+
+/* ── build paragraph ── */
+function buildP(tokens){
+  const el = document.createElement("p");
+  el.className = "para-text";
+  tokens.forEach(tok=>{
+    if(typeof tok==="string"){el.appendChild(document.createTextNode(tok));return;}
+    const s = document.createElement("span");
+    s.className = `w w${tok.t}`;
+    s.textContent = tok.w;
+    s.dataset.w=tok.w; s.dataset.ph=tok.ph; s.dataset.ro=tok.ro; s.dataset.t=tok.t;
+    el.appendChild(s);
+  });
+  return el;
+}
+
+/* ── load chapter ── */
+const book = document.getElementById("book");
+function loadCh(i){
+  if(inPractice) setMode('read');
+  cur=i; setActive(i); updateMobNav();
+  const ch = chapters[i];
+  book.innerHTML="";
+  const inner = document.createElement("div");
+  inner.className="book-inner";
+
+  const hdr = document.createElement("div");
+  hdr.className="ch-header";
+  hdr.innerHTML=`<span class="ch-num-bg" aria-hidden="true">${ROM[i]}</span><span class="ch-label">${ch.num}</span><h2 class="ch-viet">${ch.viet}</h2><p class="ch-ro">${ch.sub}</p><hr class="ch-rule">`;
+  inner.appendChild(hdr);
+
+  ch.paras.forEach((para,pi)=>{
+    const blk=document.createElement("div");
+    blk.className="para";
+    blk.appendChild(buildP(para.t));
+    const ro=document.createElement("div");
+    ro.className="para-ro"+(showAll?" vis":"");
+    ro.textContent=para.ro;
+    blk.appendChild(ro);
+    const trBtn=document.createElement("button");
+    trBtn.className="tr-btn"+(showAll?" open":"");
+    trBtn.textContent=showAll?"▲ ascunde":"▼ traduce";
+    trBtn.addEventListener("click",()=>{
+      const open=ro.classList.toggle("vis");
+      trBtn.textContent=open?"▲ ascunde":"▼ traduce";
+      trBtn.classList.toggle("open",open);
+    });
+    blk.appendChild(trBtn);
+    inner.appendChild(blk);
+    if(pi<ch.paras.length-1){
+      const sep=document.createElement("div");
+      sep.className="sep";sep.textContent="· · ·";
+      inner.appendChild(sep);
+    }
+  });
+
+  const nav=document.createElement("div");nav.className="ch-nav";
+  const prev=document.createElement("button");prev.className="nav-btn";prev.disabled=i===0;
+  if(i>0){prev.innerHTML=`<span class="nav-dir">← anterior</span>${chapters[i-1].viet}`;prev.addEventListener("click",()=>loadCh(i-1));}
+  else{prev.innerHTML=`<span class="nav-dir">←</span>Început`;}
+  const next=document.createElement("button");next.className="nav-btn";next.disabled=i===chapters.length-1;
+  if(i<chapters.length-1){next.innerHTML=`<span class="nav-dir">următor →</span>${chapters[i+1].viet}`;next.addEventListener("click",()=>{markDone(i);loadCh(i+1);});}
+  else{next.innerHTML=`<span class="nav-dir">→</span>Sfârșit`;}
+  nav.appendChild(prev);nav.appendChild(next);
+  inner.appendChild(nav);
+  book.appendChild(inner);
+
+  /* scroll to top — desktop scrolls .book, mobile scrolls window */
+  book.scrollTop=0;
+  window.scrollTo({top:0,behavior:"smooth"});
+  setTimeout(()=>markDone(i),5000);
+}
+
+function markDone(i){
+  if(done.has(i))return;
+  done.add(i);
+  localStorage.setItem(DONE_KEY,JSON.stringify([...done]));
+  const btn=chList.children[i]; if(btn)btn.classList.add("done");
+  const tab=mobTabs.children[i]; if(tab)tab.classList.add("done");
+  updateProgress();
+}
+
+/* ── toggles (synced desktop + mobile) ── */
+function setColorize(val){
+  colorize=val;
+  document.body.classList.toggle("colorize",val);
+  document.getElementById("btn-color").classList.toggle("active",val);
+  document.getElementById("mob-btn-color").classList.toggle("active",val);
+}
+function setTranslate(val){
+  showAll=val;
+  document.body.classList.toggle("show-all",val);
+  document.getElementById("btn-trans").classList.toggle("active",val);
+  document.getElementById("mob-btn-trans").classList.toggle("active",val);
+  document.querySelectorAll(".tr-btn").forEach(b=>{
+    b.textContent=val?"▲ ascunde":"▼ traduce";b.classList.toggle("open",val);
+  });
+}
+document.getElementById("btn-color").addEventListener("click",()=>setColorize(!colorize));
+document.getElementById("btn-trans").addEventListener("click",()=>setTranslate(!showAll));
+document.getElementById("mob-btn-color").addEventListener("click",()=>setColorize(!colorize));
+document.getElementById("mob-btn-trans").addEventListener("click",()=>setTranslate(!showAll));
+
+/* ── tooltip ── */
+const tt   = document.getElementById("tt");
+const ttTy = document.getElementById("tt-type");
+const ttWd = document.getElementById("tt-word");
+const ttPh = document.getElementById("tt-phon");
+const ttRo = document.getElementById("tt-ro");
+let litEl=null;
+
+function showTT(el,e){
+  const m=tm[el.dataset.t]||{label:el.dataset.t,clr:"#aaa"};
+  ttTy.textContent=m.label; ttTy.style.color=m.clr; ttTy.style.background=m.clr+"18";
+  ttWd.textContent=el.dataset.w; ttWd.style.color=m.clr;
+  ttPh.textContent="["+el.dataset.ph+"]";
+  ttRo.textContent=el.dataset.ro;
+  tt.classList.add("on"); posTT(e);
+  if(litEl)litEl.classList.remove("lit");
+  litEl=el; el.classList.add("lit");
+}
+function posTT(e){
+  if(window.innerWidth<=768)return; /* mobile uses bottom sheet */
+  const cx=e.clientX??(e.touches?.[0]?.clientX??0);
+  const cy=e.clientY??(e.touches?.[0]?.clientY??0);
+  const W=tt.offsetWidth||230,H=tt.offsetHeight||140;
+  const vw=window.innerWidth,vh=window.innerHeight;
+  let x=cx+16,y=cy+16;
+  if(x+W>vw-8)x=cx-W-16; if(y+H>vh-8)y=cy-H-16;
+  x=Math.max(8,x); y=Math.max(8,y);
+  tt.style.left=x+"px"; tt.style.top=y+"px";
+}
+function hideTT(){
+  tt.classList.remove("on");
+  if(litEl){litEl.classList.remove("lit");litEl=null;}
+}
+
+book.addEventListener("click",e=>{
+  const el=e.target.closest(".w");
+  if(!el){hideTT();return;}
+  e.stopPropagation();
+  if(litEl===el){hideTT();return;}
+  showTT(el,e);
+});
+book.addEventListener("mouseover",e=>{const el=e.target.closest(".w");if(el)showTT(el,e);});
+book.addEventListener("mouseout", e=>{if(!e.relatedTarget?.closest?.("#tt,.w"))hideTT();});
+document.addEventListener("click",e=>{if(!e.target.closest(".w,#tt"))hideTT();});
+
+/* ── SPACED REPETITION ── */
+const SR_KEY = 'hno_sr_v1';
+const NEW_PER_SESSION = 5;
+let srData = {};
+let allCards = [];
+let sessionQueue = [];
+let sessionDone = 0;
+let curCard = null;
+let inPractice = false;
+
+function loadSR(){ try{ srData=JSON.parse(localStorage.getItem(SR_KEY))||{}; }catch{ srData={}; } }
+function saveSR(){ localStorage.setItem(SR_KEY,JSON.stringify(srData)); }
+function srKey(c){ return c.w+'|'+c.t; }
+function getSR(c){ return srData[srKey(c)]||{interval:1,ef:2.5,due:0,lapses:0,isNew:true}; }
+
+function extractAllCards(){
+  const seen = new Map();
+  chapters.forEach((ch,ci)=>{
+    ch.paras.forEach(para=>{
+      para.t.forEach(tok=>{
+        if(typeof tok==='string') return;
+        const k=srKey(tok);
+        if(!seen.has(k)) seen.set(k,{w:tok.w,ph:tok.ph,ro:tok.ro,t:tok.t,sentence:para.ro,chapter:ci});
+      });
+    });
+  });
+  return [...seen.values()];
+}
+
+function buildSessionQueue(){
+  const today=Date.now();
+  const due=allCards.filter(c=>{ const s=getSR(c); return !s.isNew&&s.due<=today; });
+  const newCards=allCards.filter(c=>getSR(c).isNew);
+  due.sort(()=>Math.random()-.5);
+  sessionQueue=[...due,...newCards.slice(0,NEW_PER_SESSION)];
+  sessionDone=0;
+}
+
+function updatePrStats(){
+  const today=Date.now();
+  document.getElementById('pr-due').textContent=allCards.filter(c=>{const s=getSR(c);return !s.isNew&&s.due<=today;}).length;
+  document.getElementById('pr-new').textContent=Math.min(allCards.filter(c=>getSR(c).isNew).length,NEW_PER_SESSION);
+  document.getElementById('pr-done').textContent=sessionDone;
+}
+
+function updatePhases(){
+  const total=sessionDone+sessionQueue.length;
+  const pct=total>0?sessionDone/total:0;
+  const idx=Math.min(3,Math.floor(pct*4));
+  document.querySelectorAll('.pr-phase').forEach((ph,i)=>{
+    ph.classList.toggle('active',i===idx);
+    ph.classList.toggle('done',i<idx);
+  });
+}
+
+function showCard(card){
+  curCard=card;
+  const m=tm[card.t]||{label:card.t,clr:'#aaa'};
+  const badge=document.getElementById('pr-badge');
+  badge.textContent=m.label; badge.style.color=m.clr; badge.style.background=m.clr+'18';
+  const wd=document.getElementById('pr-word');
+  wd.textContent=card.w; wd.style.color=m.clr;
+  const ctxEl=document.getElementById('pr-ctx-front');
+  ctxEl.textContent=card.sentence||'';
+  ctxEl.style.display=card.sentence?'block':'none';
+  document.getElementById('pr-front').style.display='block';
+  document.getElementById('pr-back').style.display='none';
+  document.getElementById('pr-card').style.display='flex';
+  document.getElementById('pr-empty').style.display='none';
+  updatePrStats();
+}
+
+function revealCard(){
+  if(!curCard) return;
+  const m=tm[curCard.t]||{label:curCard.t,clr:'#aaa'};
+  document.getElementById('pr-phon').textContent='['+curCard.ph+']';
+  const rw=document.getElementById('pr-ro-word');
+  rw.textContent=curCard.ro; rw.style.color=m.clr;
+  const rcEl=document.getElementById('pr-ro-ctx');
+  rcEl.textContent=curCard.sentence||'';
+  rcEl.style.display=curCard.sentence?'block':'none';
+  document.getElementById('pr-front').style.display='none';
+  document.getElementById('pr-back').style.display='block';
+}
+
+function rateCard(q){
+  if(!curCard) return;
+  const sr=getSR(curCard);
+  const DAY=86400000;
+  let {interval,ef,lapses}=sr;
+  if(q===0){      interval=1; lapses++; ef=Math.max(1.3,ef-0.2); }
+  else if(q===1){ interval=Math.max(1,Math.round(interval*1.2)); ef=Math.max(1.3,ef-0.15); }
+  else if(q===2){ interval=interval<=1?3:Math.round(interval*ef); }
+  else{           interval=interval<=1?4:Math.round(interval*ef*1.3); ef=Math.min(2.5,ef+0.15); }
+  srData[srKey(curCard)]={interval,ef,lapses,due:Date.now()+interval*DAY,isNew:false};
+  saveSR(); sessionDone++; sessionQueue.shift(); updatePhases();
+  if(sessionQueue.length===0){
+    document.getElementById('pr-card').style.display='none';
+    document.getElementById('pr-empty').style.display='block';
+    updatePrStats(); return;
+  }
+  showCard(sessionQueue[0]);
+}
+
+function setMode(mode){
+  inPractice=mode==='practice';
+  document.body.classList.toggle('practice-mode',inPractice);
+  document.getElementById('tab-read').classList.toggle('active',!inPractice);
+  document.getElementById('tab-practice').classList.toggle('active',inPractice);
+  const mobBtn=document.getElementById('mob-btn-practice');
+  mobBtn.textContent=inPractice?'← carte':'practică';
+  mobBtn.classList.toggle('active',inPractice);
+  if(inPractice){
+    buildSessionQueue(); updatePhases();
+    if(sessionQueue.length>0) showCard(sessionQueue[0]);
+    else{
+      document.getElementById('pr-card').style.display='none';
+      document.getElementById('pr-empty').style.display='block';
+      updatePrStats();
+    }
+  }
+}
+
+/* ── VSL-A textbook vocabulary (Units 1-4) ── */
+const vslCards=[
+  {w:"chào",ph:"chao",ro:"salut / bună ziua",t:"v"},
+  {w:"xin lỗi",ph:"sin loi",ro:"îmi pare rău / scuze",t:"v"},
+  {w:"nào",ph:"nao",ro:"care",t:"p"},
+  {w:"gì",ph:"gi",ro:"ce",t:"p"},
+  {w:"rất vui được gặp",ph:"rat vui duoc gap",ro:"încântat să te întâlnesc",t:"v"},
+  {w:"anh",ph:"anh",ro:"tu (bărbat mai mare) / frate mai mare",t:"p"},
+  {w:"chị",ph:"chi",ro:"tu (femeie mai mare) / soră mai mare",t:"p"},
+  {w:"ông",ph:"ong",ro:"domn / bunic / dumneavoastră (senior)",t:"p"},
+  {w:"em",ph:"em",ro:"eu (față de cineva mai mare) / frate/soră mai mic",t:"p"},
+  {w:"ạ",ph:"a",ro:"particulă de politețe (la final)",t:"p"},
+  {w:"còn",ph:"kon",ro:"dar / iar / și tu?",t:"cj"},
+  {w:"vâng",ph:"vang",ro:"da (politicos)",t:"p"},
+  {w:"không phải",ph:"khong phai",ro:"nu este (negație pentru 'là')",t:"p"},
+  {w:"có phải không",ph:"ko phai khong",ro:"este...? (întrebare da/nu)",t:"p"},
+  {w:"phải không",ph:"phai khong",ro:"nu-i așa?",t:"p"},
+  {w:"kỹ sư",ph:"ki su",ro:"inginer",t:"n"},
+  {w:"lái xe",ph:"lai se",ro:"șofer",t:"n"},
+  {w:"học sinh",ph:"hok sinh",ro:"elev",t:"n"},
+  {w:"họa sĩ",ph:"hoa si",ro:"pictor / artist",t:"n"},
+  {w:"nhân viên văn phòng",ph:"nhan vien van phong",ro:"angajat de birou",t:"n"},
+  {w:"ca sĩ",ph:"ka si",ro:"cântăreț",t:"n"},
+  {w:"đầu bếp",ph:"dau bep",ro:"bucătar-șef",t:"n"},
+  {w:"cảnh sát",ph:"kan sat",ro:"polițist",t:"n"},
+  {w:"làm nghề gì",ph:"lam nge gi",ro:"ce meserie are",t:"v"},
+  {w:"chúng ta",ph:"chung ta",ro:"noi (incluzând și persoana cu care vorbești)",t:"p"},
+  {w:"đâu",ph:"dau",ro:"unde",t:"p"},
+  {w:"đây",ph:"day",ro:"acesta / aici",t:"p"},
+  {w:"đó",ph:"do",ro:"acela / acolo",t:"p"},
+  {w:"kia",ph:"kia",ro:"acela (mai departe)",t:"p"},
+  {w:"anh ấy",ph:"anh ay",ro:"el (bărbat tânăr)",t:"p"},
+  {w:"chị ấy",ph:"chi ay",ro:"ea (femeie tânără)",t:"p"},
+  {w:"ông ấy",ph:"ong ay",ro:"el (senior)",t:"p"},
+  {w:"bà ấy",ph:"ba ay",ro:"ea (senior)",t:"p"},
+  {w:"bao nhiêu",ph:"bao nhieu",ro:"câți / cât (cantitate)",t:"p"},
+  {w:"mấy",ph:"may",ro:"câți / câte (cantitate mică)",t:"p"},
+  {w:"bao nhiêu tuổi",ph:"bao nhieu tuoi",ro:"câți ani are",t:"p"},
+  {w:"có khỏe không",ph:"ko khoe khong",ro:"ești bine?",t:"v"},
+  {w:"khỏe",ph:"khoe",ro:"sănătos / bine",t:"a"},
+  {w:"bình thường",ph:"binh thuong",ro:"normal / obișnuit",t:"a"},
+  {w:"hơi mệt",ph:"hoi met",ro:"puțin obosit",t:"a"},
+  {w:"lâu",ph:"lau",ro:"mult timp / de mult",t:"a"},
+  {w:"mươi",ph:"muoi",ro:"zeci (în numerele 20–99)",t:"nu"},
+  {w:"mốt",ph:"mot",ro:"unu (în 21, 31...)",t:"nu"},
+  {w:"lăm",ph:"lam",ro:"cinci (în 15, 25...)",t:"nu"},
+  {w:"một trăm",ph:"mot tram",ro:"o sută",t:"nu"},
+  {w:"bảy",ph:"bay",ro:"șapte",t:"nu"},
+  {w:"tám",ph:"tam",ro:"opt",t:"nu"},
+  {w:"chín",ph:"chin",ro:"nouă",t:"nu"},
+  {w:"mùa",ph:"mua",ro:"anotimp / sezon",t:"n"},
+  {w:"mùa xuân",ph:"mua suan",ro:"primăvară",t:"n"},
+  {w:"mùa hè",ph:"mua he",ro:"vară",t:"n"},
+  {w:"mùa thu",ph:"mua thu",ro:"toamnă",t:"n"},
+  {w:"mùa đông",ph:"mua dong",ro:"iarnă",t:"n"},
+  {w:"mùa mưa",ph:"mua mua",ro:"sezon ploios",t:"n"},
+  {w:"mùa khô",ph:"mua kho",ro:"sezon uscat",t:"n"},
+  {w:"châu lục",ph:"chau luk",ro:"continent",t:"n"},
+  {w:"châu Á",ph:"chau a",ro:"Asia",t:"nm"},
+  {w:"châu Âu",ph:"chau au",ro:"Europa",t:"nm"},
+  {w:"điểm du lịch",ph:"diem zu lik",ro:"atracție turistică",t:"n"},
+  {w:"đi du lịch",ph:"di zu lik",ro:"a călători / a merge în vacanță",t:"v"},
+  {w:"đi chơi",ph:"di choi",ro:"a ieși / a se distra",t:"v"},
+  {w:"đi chợ",ph:"di cho",ro:"a merge la piață",t:"v"},
+  {w:"đi công tác",ph:"di kong tak",ro:"a merge în deplasare de serviciu",t:"v"},
+  {w:"đi nước ngoài",ph:"di nuok ngoai",ro:"a merge în străinătate",t:"v"},
+  {w:"siêu thị",ph:"sieu thi",ro:"supermarket",t:"n"},
+  {w:"công ty",ph:"kong ti",ro:"companie / firmă",t:"n"},
+  {w:"điện thoại",ph:"dien thoai",ro:"telefon",t:"n"},
+  {w:"ô tô",ph:"o to",ro:"mașină (automobil)",t:"n"},
+  {w:"máy tính",ph:"may tinh",ro:"calculator / computer",t:"n"},
+  {w:"ba lô",ph:"ba lo",ro:"rucsac",t:"n"},
+  {w:"bút chì",ph:"but chi",ro:"creion",t:"n"},
+  {w:"phòng ăn",ph:"fong an",ro:"sufragerie / sală de mese",t:"n"},
+  {w:"phòng làm việc",ph:"fong lam viek",ro:"birou / cameră de lucru",t:"n"},
+  {w:"chật",ph:"chat",ro:"îngust / mic (spațiu insuficient)",t:"a"},
+  {w:"cũ",ph:"ku",ro:"vechi / uzat",t:"a"},
+  {w:"con",ph:"kon",ro:"clasificator pentru animale",t:"c"},
+  {w:"quả",ph:"kwa",ro:"clasificator pentru fructe",t:"c"},
+  {w:"cuốn",ph:"kuon",ro:"clasificator pentru cărți",t:"c"},
+  {w:"tờ",ph:"to",ro:"clasificator pentru foi de hârtie",t:"c"},
+  {w:"củ",ph:"ku",ro:"clasificator pentru legume rădăcină",t:"c"},
+  {w:"căn",ph:"kan",ro:"clasificator pentru case / apartamente",t:"c"},
+  {w:"con mèo",ph:"kon meo",ro:"pisică",t:"n"},
+  {w:"con chó",ph:"kon cho",ro:"câine",t:"n"},
+  {w:"con bò",ph:"kon bo",ro:"vacă",t:"n"},
+  {w:"con gà",ph:"kon ga",ro:"găină / pui",t:"n"},
+  {w:"con vịt",ph:"kon vit",ro:"rață",t:"n"},
+  {w:"con thỏ",ph:"kon tho",ro:"iepure",t:"n"},
+  {w:"con voi",ph:"kon voi",ro:"elefant",t:"n"},
+  {w:"con chim",ph:"kon chim",ro:"pasăre",t:"n"},
+  {w:"quả táo",ph:"kwa tao",ro:"măr",t:"n"},
+  {w:"quả chuối",ph:"kwa chuoi",ro:"banană",t:"n"},
+  {w:"quả dưa hấu",ph:"kwa dua hau",ro:"pepene verde",t:"n"},
+  {w:"thầy",ph:"thay",ro:"profesor (bărbat)",t:"p"},
+  {w:"chú",ph:"chu",ro:"unchi / domn (mai tânăr decât tatăl)",t:"p"},
+  {w:"cháu",ph:"chau",ro:"nepot / eu (față de bunici sau unchi)",t:"p"},
+  {w:"biết",ph:"biet",ro:"a ști / a cunoaște",t:"v"},
+  {w:"nói",ph:"noi",ro:"a vorbi / a spune",t:"v"},
+  {w:"xem",ph:"sem",ro:"a privi / a urmări",t:"v"},
+  {w:"dạy",ph:"zay",ro:"a preda / a învăța (pe cineva)",t:"v"},
+  {w:"sẽ",ph:"se",ro:"va / o să (marker de viitor)",t:"p"},
+  {w:"được",ph:"duok",ro:"a putea / a reuși",t:"p"},
+  {w:"những",ph:"nhung",ro:"cei / cele (marker de plural)",t:"p"},
+  {w:"nếu",ph:"neu",ro:"dacă",t:"cj"},
+  {w:"vợ chồng",ph:"vo chong",ro:"soț și soție",t:"n"},
+  {w:"mọi người",ph:"moi nguoi",ro:"toată lumea / toți",t:"n"},
+  {w:"có thể",ph:"ko the",ro:"poate / a putea",t:"v"},
+  {w:"nhớ",ph:"nho",ro:"a-și aminti",t:"v"},
+  {w:"tuần sau",ph:"tuan sau",ro:"săptămâna viitoare",t:"n"},
+  {w:"năm sau",ph:"nam sau",ro:"anul viitor",t:"n"},
+  {w:"cùng nhau",ph:"kung nhau",ro:"împreună",t:"a"},
+  {w:"sang",ph:"sang",ro:"a merge în (altă țară)",t:"v"},
+  {w:"năng động",ph:"nang dong",ro:"dinamic / activ",t:"a"},
+  {w:"náo nhiệt",ph:"nao nhiet",ro:"animat / aglomerat",t:"a"},
+  {w:"rẻ",ph:"re",ro:"ieftin",t:"a"},
+  {w:"đắt",ph:"dat",ro:"scump",t:"a"},
+  {w:"màu",ph:"mau",ro:"culoare",t:"n"},
+  {w:"phở bò",ph:"fo bo",ro:"phở cu vită",t:"n"},
+  {w:"phở gà",ph:"fo ga",ro:"phở cu pui",t:"n"},
+  {w:"bún bò",ph:"bun bo",ro:"supă cu tăiței și carne de vită",t:"n"},
+  {w:"cơm tấm",ph:"kom tam",ro:"orez spart cu carne de porc",t:"n"},
+  {w:"hải sản",ph:"hai san",ro:"fructe de mare",t:"n"},
+  {w:"Sài Gòn",ph:"sai gon",ro:"Saigon (Ho Chi Minh City)",t:"nm"},
+  {w:"Thành phố Hồ Chí Minh",ph:"tan fo ho chi min",ro:"Ho Chi Minh City",t:"nm"},
+  {w:"Trung Quốc",ph:"trung kuok",ro:"China",t:"nm"},
+  {w:"Úc",ph:"uk",ro:"Australia",t:"nm"},
+  {w:"Đức",ph:"duk",ro:"Germania",t:"nm"},
+  {w:"ngân hàng",ph:"ngan hang",ro:"bancă",t:"n"},
+  {w:"con trai",ph:"kon trai",ro:"fiu / băiat",t:"n"},
+  {w:"con gái",ph:"kon gai",ro:"fiică / fată",t:"n"},
+  {w:"nhân viên",ph:"nhan vien",ro:"angajat / personal",t:"n"},
+  {w:"ngày nghỉ",ph:"ngay nghi",ro:"zi liberă / concediu",t:"n"},
+  {w:"gốc Việt",ph:"gok viet",ro:"de origine vietnameză",t:"a"},
+  {w:"lần đầu",ph:"lan dau",ro:"pentru prima dată",t:"n"},
+  {w:"câu hỏi",ph:"kau hoi",ro:"întrebare",t:"n"},
+  {w:"đô thị",ph:"do thi",ro:"oraș / urban",t:"n"},
+  {w:"đại học",ph:"dai hok",ro:"universitate",t:"n"},
+  /* Unit 4-1: verb đi, transport, common verbs */
+  {w:"đi học",ph:"di hok",ro:"a merge la școală / a studia",t:"v"},
+  {w:"đi làm",ph:"di lam",ro:"a merge la muncă",t:"v"},
+  {w:"đi ăn",ph:"di an",ro:"a merge să mănânci",t:"v"},
+  {w:"xe máy",ph:"se mai",ro:"motocicletă / scuter",t:"n"},
+  {w:"bằng",ph:"bang",ro:"cu / prin (mijloc de transport)",t:"p"},
+  {w:"tuần",ph:"tuan",ro:"săptămână",t:"n"},
+  /* Unit 4-2: house vocabulary, key verbs */
+  {w:"bận",ph:"ban",ro:"ocupat",t:"a"},
+  {w:"muốn",ph:"muon",ro:"a vrea / a dori",t:"v"},
+  {w:"mời",ph:"moi",ro:"a invita",t:"v"},
+  {w:"mua",ph:"mua",ro:"a cumpăra",t:"v"},
+  {w:"đến",ph:"den",ro:"a veni / a ajunge",t:"v"},
+  {w:"rất",ph:"rat",ro:"foarte",t:"a"},
+  {w:"đẹp",ph:"dep",ro:"frumos / frumoasă",t:"a"},
+  {w:"rộng",ph:"rong",ro:"spațios / larg",t:"a"},
+  {w:"mới",ph:"moi",ro:"nou / nouă",t:"a"},
+  {w:"nhà",ph:"nha",ro:"casă / acasă",t:"n"},
+  {w:"phòng khách",ph:"fong khach",ro:"cameră de zi / living",t:"n"},
+  {w:"phòng ngủ",ph:"fong ngu",ro:"dormitor",t:"n"},
+  {w:"bức tranh",ph:"buk tranh",ro:"tablou / pictură",t:"n"},
+  {w:"máy in",ph:"may in",ro:"imprimantă",t:"n"},
+  /* Unit 4-3: more rooms, demonstratives, adjectives */
+  {w:"phòng bếp",ph:"fong bep",ro:"bucătărie",t:"n"},
+  {w:"phòng tắm",ph:"fong tam",ro:"baie / sală de baie",t:"n"},
+  {w:"này",ph:"nay",ro:"acesta (după substantiv)",t:"p"},
+  {w:"đấy",ph:"day",ro:"acela (mai aproape)",t:"p"},
+  {w:"lớn",ph:"lon",ro:"mare (ca dimensiune)",t:"a"},
+  {w:"nhỏ",ph:"nho",ro:"mic (ca dimensiune)",t:"a"},
+  {w:"ghế",ph:"ge",ro:"scaun",t:"n"},
+  {w:"cái bàn",ph:"kai ban",ro:"masă",t:"n"},
+  {w:"cái tủ",ph:"kai tu",ro:"dulap",t:"n"},
+  {w:"quạt điện",ph:"kwat dien",ro:"ventilator electric",t:"n"},
+  {w:"ti vi",ph:"ti vi",ro:"televizor",t:"n"},
+  {w:"đồng hồ",ph:"dong ho",ro:"ceas / orologiu",t:"n"},
+  {w:"tủ lạnh",ph:"tu lanh",ro:"frigider",t:"n"},
+  {w:"con dê",ph:"kon de",ro:"capră",t:"n"},
+  /* Unit 4-4: classifiers, fruits, possessives */
+  {w:"cuốn sách",ph:"kuon sach",ro:"carte",t:"n"},
+  {w:"quả vải",ph:"kwa vai",ro:"litchi",t:"n"},
+  {w:"củ cà rốt",ph:"ku ka rot",ro:"morcov",t:"n"},
+  {w:"tờ báo",ph:"to bao",ro:"ziar",t:"n"},
+  {w:"con chuột",ph:"kon chuot",ro:"șoarece / mouse",t:"n"},
+  {w:"cái cốc",ph:"kai kok",ro:"pahar / ceașcă",t:"n"},
+];
+
+loadSR();
+allCards=extractAllCards();
+/* merge VSL-A cards (skip duplicates by key) */
+const existingKeys=new Set(allCards.map(c=>srKey(c)));
+vslCards.forEach(vc=>{
+  const k=srKey(vc);
+  if(!existingKeys.has(k)){
+    allCards.push({...vc,sentence:''});
+    existingKeys.add(k);
+  }
+});
+document.getElementById('pr-reveal').addEventListener('click',revealCard);
+document.getElementById('sr-again').addEventListener('click',()=>rateCard(0));
+document.getElementById('sr-hard').addEventListener('click', ()=>rateCard(1));
+document.getElementById('sr-good').addEventListener('click', ()=>rateCard(2));
+document.getElementById('sr-easy').addEventListener('click', ()=>rateCard(3));
+document.getElementById('tab-read').addEventListener('click',()=>setMode('read'));
+document.getElementById('tab-practice').addEventListener('click',()=>setMode('practice'));
+document.getElementById('mob-btn-practice').addEventListener('click',()=>setMode(inPractice?'read':'practice'));
+
+loadCh(0);
+</script>
+</body>
+</html>
